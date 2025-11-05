@@ -7,15 +7,35 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
-    // Dummy login validation
-    if (email === "user@gmail.com" && password === "12345") {
-      alert("Login Successful 🎉");
-      navigate("/home");
-    } else {
-      alert("Invalid Credentials ❌");
+    try {
+      // Prepare form data
+      const formData = new URLSearchParams();
+      formData.append("email", email);
+      formData.append("password", password);
+
+      // Send POST request to backend
+      // For Login
+const response = await fetch("http://localhost:8082/ngo/api/register", {
+  method: "POST",
+  headers: { "Content-Type": "application/x-www-form-urlencoded" },
+  body: formData.toString(),
+});
+
+
+      const data = await response.json();
+
+      if (data.status === "success") {
+        alert(`Login Successful 🎉 Welcome ${data.user}`);
+        navigate("/home");
+      } else {
+        alert(data.message || "Invalid Credentials ❌");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Server error ❌");
     }
   };
 
