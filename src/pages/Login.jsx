@@ -5,38 +5,17 @@ import { useNavigate } from "react-router-dom";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate(); // React Router navigation
+  const navigate = useNavigate();
 
-  const handleLogin = async (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
 
-    try {
-      // Prepare form data
-      const formData = new URLSearchParams();
-      formData.append("email", email);
-      formData.append("password", password);
-
-      // Send POST request to your backend login API
-      const response = await fetch("http://localhost:8082/ngo/api/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: formData.toString(),
-      });
-
-      const data = await response.json();
-
-      if (data.status === "success") {
-        alert(`Login Successful 🎉 Welcome ${data.user}`);
-        // Navigate to home page automatically
-        navigate("/home"); 
-      } else {
-        alert(data.message || "Invalid Credentials ❌");
-      }
-    } catch (err) {
-      console.error(err);
-      alert("Server error ❌");
+    // Dummy login validation
+    if (email === "user@gmail.com" && password === "12345") {
+      alert("Login Successful 🎉");
+      navigate("/home");
+    } else {
+      alert("Invalid Credentials ❌");
     }
   };
 

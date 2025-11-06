@@ -1,122 +1,74 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import Slideshow from "../components/Slideshow";
+import { 
+  FaBookOpen, FaUtensils, FaTshirt, FaMoneyBillWave, 
+  FaClinicMedical, FaBirthdayCake, FaChild, FaSchool, FaCartPlus 
+} from "react-icons/fa";
 import "./Home.css";
 
-function Home() {
-  const slides = [
-    "/images/food-donation.jpg",
-    "/images/education.jpg",
-    "/images/children-smile.jpg",
-    "/images/medical-help.jpg",
-  ];
-
-  const [current, setCurrent] = useState(0);
+const Home = () => {
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % slides.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [slides.length]);
+    AOS.init({ duration: 800, once: true });
+  }, []);
+
+  const donations = [
+    { icon: <FaUtensils />, title: "Food Donation", desc: "Donate leftover or surplus food with details of quantity, expiry date, and source.", route: "/food-donation" },
+    { icon: <FaBookOpen />, title: "Book Donation", desc: "Donate books by category: Story, Academic, Reference to empower children.", route: "/books-donation" },
+    { icon: <FaTshirt />, title: "Clothes Donation", desc: "Donate clothes by gender and size for children, women, and men.", route: "/clothes-donation" },
+    { icon: <FaMoneyBillWave />, title: "Money Donation", desc: "Financial support for NGO projects, school supplies, and family aid.", route: "/money-donation" },
+    { icon: <FaClinicMedical />, title: "Medical Support", desc: "Donate medical supplies or funds linked with partner hospitals.", route: "/medical-donation" },
+    { icon: <FaBirthdayCake />, title: "Event Celebration", desc: "Support birthday parties, celebrations, and special events for children.", route: "/event-support" },
+    { icon: <FaChild />, title: "Adopt a Child", desc: "Support a child: specify age, gender, and contact support for more info.", route: "/adopt-child" },
+    { icon: <FaSchool />, title: "Education Support", desc: "Donate for school fees, stationery, scholarships, or online learning programs.", route: "/education-support" },
+    { icon: <FaCartPlus />, title: "Grocery Donation", desc: "Donate groceries for families in need, providing real-time tracking of items.", route: "/grocery-donation" },
+  ];
 
   return (
     <div className="home-container">
-      {/* 🌍 Transparent Header */}
-      <header className="home-header">
-        <div className="logo">
-          <h2>🌍 NGOCONNECT</h2>
-        </div>
-        <nav className="header-buttons">
-          <button onClick={() => (window.location.href = "/about")}>About Us</button>
-          <button onClick={() => (window.location.href = "/login")}>Login</button>
-          <button onClick={() => (window.location.href = "/register")}>Register</button>
-        </nav>
-      </header>
+      {/* Hero / Slideshow */}
+      <section className="hero-section" data-aos="fade-up">
+        <Slideshow />
+      </section>
 
-      {/* 🖼️ Fullscreen Slideshow */}
-      <div className="slideshow">
-        {slides.map((slide, index) => (
-          <img
-            key={index}
-            src={slide}
-            alt={`slide-${index}`}
-            className={`slide ${index === current ? "active" : ""}`}
-          />
-        ))}
-        <div className="overlay"></div>
+      {/* About Section */}
+      <section className="about-section" data-aos="fade-right">
+        <h2>Who We Are</h2>
+        <p>
+          <strong>HelpingHand</strong> is a non-profit organization dedicated to
+          supporting children and families in need. Our mission is to create a world where
+          every child has access to education, nutrition, and care.
+        </p>
+      </section>
 
-        {/* ✨ Centered Text on Image */}
-        <div className="hero-text">
-          <h1>Bringing Hope. Inspiring Change.</h1>
-          <p>Together, we can create a better tomorrow for those in need.</p>
-          <div className="hero-buttons">
-            <button onClick={() => (window.location.href = "/donate-options")}>
-              💖 Donate Now
-            </button>
-            <button onClick={() => (window.location.href = "#booking-section")}>
-              🎉 Booking
-            </button>
-            <button onClick={() => (window.location.href = "/activities")}> 🌍 Our Activities </button>
-          </div>
-        </div>
-      </div>
-
-      {/* ❤️ Support Section */}
-      <section className="donate-support">
-        <h2>Donate & Support</h2>
-        <p>Your small contribution can create a big impact.</p>
-        <div className="donate-grid">
-          <div className="donate-card" onClick={() => (window.location.href = "/food-donation")}>
-            <img src="/images/food-donation.jpg" alt="Food Donation" />
-            <h3>🍲 Food Donation</h3>
-          </div>
-          <div className="donate-card" onClick={() => (window.location.href = "/books-donation")}>
-            <img src="/images/education.jpg" alt="Book Donation" />
-            <h3>📚 Book Donation</h3>
-          </div>
-          <div className="donate-card" onClick={() => (window.location.href = "/clothes-donation")}>
-            <img src="/images/children-smile.jpg" alt="Cloth Donation" />
-            <h3>👕 Cloth Donation</h3>
-          </div>
-          <div className="donate-card" onClick={() => (window.location.href = "/money-donation")}>
-            <img src="/images/medical-help.jpg" alt="Money Donation" />
-            <h3>💰 Money Donation</h3>
-          </div>
+      {/* Donations Section */}
+      <section className="donations-section">
+        <h2 data-aos="fade-left">Donate & Support</h2>
+        <div className="donation-grid">
+          {donations.map((item, index) => (
+            <div className="donation-card" key={index} data-aos="fade-up" data-aos-delay={index * 80}>
+              <div className="icon">{item.icon}</div>
+              <h3>{item.title}</h3>
+              <p>{item.desc}</p>
+              <button onClick={() => navigate(item.route)}>Donate / Support</button>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* 🎉 Booking Section */}
-      <section id="booking-section" className="booking-section">
-        <h2>🎊 Celebrate with a Cause</h2>
-        <p>Book special events at our NGO — spread happiness while celebrating your moments!</p>
-
-        <div className="booking-grid">
-          <div className="booking-card" onClick={() => (window.location.href = "/birthday-booking")}>
-            <img src="/images/birthday.jpg" alt="Birthday Celebration" />
-            <h3>🎂 Birthday Celebration</h3>
-            <p>Celebrate your birthday with underprivileged children and bring smiles to their faces!</p>
-          </div>
-
-          <div className="booking-card" onClick={() => (window.location.href = "/anniversary-booking")}>
-            <img src="/images/anniversary.jpg" alt="Anniversary" />
-            <h3>💞 Anniversary Celebration</h3>
-            <p>Mark your love by supporting a noble cause through your special day.</p>
-          </div>
-
-          <div className="booking-card" onClick={() => (window.location.href = "/festival-booking")}>
-            <img src="/images/festival.jpg" alt="Festival Celebration" />
-            <h3>🪔 Festival Celebration</h3>
-            <p>Celebrate festivals with those who need love, care, and happiness the most.</p>
-          </div>
-
-          <div className="booking-card" onClick={() => (window.location.href = "/ngo-event-booking")}>
-            <img src="/images/event.jpg" alt="NGO Event" />
-            <h3>🤝 Host NGO Event</h3>
-            <p>Organize social events, workshops, or community activities with our NGO team.</p>
-          </div>
-        </div>
+      {/* Inspirational Quotes */}
+      <section className="quotes-section" data-aos="fade-up">
+        <h2>Inspirational Thoughts</h2>
+        <p>“Education is the most powerful weapon which you can use to change the world.” — Nelson Mandela</p>
+        <p>“An investment in knowledge pays the best interest.” — Benjamin Franklin</p>
+        <p>“Every child deserves a happy and healthy childhood.” — Anonymous</p>
       </section>
     </div>
   );
-}
+};
 
 export default Home;

@@ -1,49 +1,63 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { FaUtensils, FaTshirt, FaBook, FaRecycle, FaRupeeSign } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import "./DonateOptions.css";
 
-function DonateOptions() {
+const DonateOptions = () => {
+  const navigate = useNavigate();
+
+  const donationOptions = [
+    {
+      name: "🍲 Food Donation",
+      path: "/food-donation",
+      description: "Donate cooked, uncooked, or leftover food to feed the needy.",
+      className: "food-shape",
+    },
+    {
+      name: "📚 Books Donation",
+      path: "/books-donation",
+      description: "Share knowledge by donating your old books.",
+      className: "book-shape",
+    },
+    {
+      name: "👕 Clothes Donation",
+      path: "/clothes-donation",
+      description: "Help others stay warm with your unused clothes.",
+      className: "clothes-shape",
+    },
+    {
+      name: "🎁 Old Things Donation",
+      path: "/oldthings-donation",
+      description: "Give new life to old toys, furniture, and electronics.",
+      className: "oldthings-shape",
+    },
+    {
+      name: "💰 Money Donation",
+      path: "/money-donation",
+      description: "Support education, health, and hunger programs by donating funds.",
+      className: "money-shape",
+    },
+  ];
+
   return (
-    <div className="donate-container">
-      <h1 className="donate-title">Choose How You’d Like to Donate ❤️</h1>
-      <p className="donate-subtitle">
-        Your small contribution can bring a big smile! Select a donation type below.
-      </p>
+    <div className="donate-options-container">
+      <h1>💖 Choose a Donation Type</h1>
+      <p>Every act of kindness matters. Select a way to help others.</p>
 
-      <div className="donate-options">
-        <Link to="/food-donation" className="donate-card">
-          <FaUtensils className="donate-icon food" />
-          <h3>Food Donation</h3>
-          <p>Help feed underprivileged families and children.</p>
-        </Link>
-
-        <Link to="/clothes-donation" className="donate-card">
-          <FaTshirt className="donate-icon clothes" />
-          <h3>Clothes Donation</h3>
-          <p>Donate clothes to keep someone warm this season.</p>
-        </Link>
-
-        <Link to="/books-donation" className="donate-card">
-          <FaBook className="donate-icon books" />
-          <h3>Books Donation</h3>
-          <p>Support education by donating your old books.</p>
-        </Link>
-
-        <Link to="/oldthings-donation" className="donate-card">
-          <FaRecycle className="donate-icon oldthings" />
-          <h3>Old Things</h3>
-          <p>Give your old items a new purpose — to help others.</p>
-        </Link>
-
-        <Link to="/money-donation" className="donate-card">
-          <FaRupeeSign className="donate-icon money" />
-          <h3>Money Donation</h3>
-          <p>Every rupee counts — donate to make a real difference.</p>
-        </Link>
+      <div className="donation-grid">
+        {donationOptions.map((option, index) => (
+          <div
+            key={index}
+            className={`donation-card ${option.className}`}
+            onClick={() => navigate(option.path)}
+          >
+            <h2>{option.name}</h2>
+            <p>{option.description}</p>
+            <button className="donate-btn">Donate Now ➜</button>
+          </div>
+        ))}
       </div>
     </div>
   );
-}
+};
 
 export default DonateOptions;

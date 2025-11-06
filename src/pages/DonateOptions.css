@@ -1,78 +1,54 @@
-/* Container */
-.donate-container {
+.donate-options-container {
   text-align: center;
-  padding: 80px 40px;
-  background-color: #f9fafc;
+  padding: 50px 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
   min-height: 100vh;
 }
 
-/* Title & Subtitle */
-.donate-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #222;
-  margin-bottom: 10px;
+.donate-options-container h2 {
+  color: #1e90ff;
+  margin-bottom: 40px;
+  font-size: 2rem;
 }
 
-.donate-subtitle {
-  font-size: 1.2rem;
-  color: #555;
-  margin-bottom: 60px;
-}
-
-/* Card Layout */
-.donate-options {
+.donate-options-buttons {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 35px;
+  gap: 30px;
 }
 
-/* Card Styling */
-.donate-card {
-  background: white;
-  border-radius: 15px;
-  width: 250px;
-  padding: 30px 20px;
-  text-align: center;
-  text-decoration: none;
-  color: #333;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.35s ease;
+.donate-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%; /* Circle shape */
+  background-color: #ff6b81;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
 }
 
-.donate-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-}
-
-/* Icon Styling */
-.donate-icon {
-  font-size: 3.5rem;
-  margin-bottom: 20px;
-  transition: all 0.3s ease;
-}
-
-/* Icon Colors */
-.donate-icon.food { color: #ff6b6b; }
-.donate-icon.clothes { color: #4dabf7; }
-.donate-icon.books { color: #51cf66; }
-.donate-icon.oldthings { color: #f9a825; }
-.donate-icon.money { color: #ff8c00; }
-
-.donate-card:hover .donate-icon {
-  transform: scale(1.15);
-}
-
-/* Card Text */
-.donate-card h3 {
-  font-size: 1.4rem;
-  margin-bottom: 10px;
-  font-weight: 600;
-}
-
-.donate-card p {
-  color: #666;
+.donate-btn span {
+  margin-top: 10px;
   font-size: 1rem;
-  line-height: 1.5;
+  text-align: center;
 }
+
+.donate-btn:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0px 8px 20px rgba(0,0,0,0.3);
+}
+
+.food { background-color: #ff6b6b; }
+.books { background-color: #1e90ff; }
+.clothes { background-color: #ffb84d; }
+.old-things { background-color: #6c5ce7; }
+.money { background-color: #2ed573; }

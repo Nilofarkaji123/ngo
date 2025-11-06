@@ -1,100 +1,34 @@
 .welcome-container {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #a18cd1, #fbc2eb);
-  background-size: 400% 400%;
-  animation: gradientBG 15s ease infinite;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #003B8E, #008DFF);
   color: white;
   text-align: center;
-  font-family: Arial, sans-serif;
-  overflow: hidden;
+  animation: fadeIn 2s ease-in-out;
 }
 
-@keyframes gradientBG {
-  0% {background-position: 0% 50%;}
-  50% {background-position: 100% 50%;}
-  100% {background-position: 0% 50%;}
-}
-
-/* Welcome banner now only shows one at a time */
-.welcome-banner {
-  position: absolute;
-  top: 20px;
-  width: 100%;
-  text-align: center;
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: white;
-  text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
-}
-
-
-@keyframes bannerSlide {
-  0% {transform: translateX(0);}
-  50% {transform: translateX(-20%);}
-  100% {transform: translateX(0);}
-}
-
-.welcome-word {
-  background-color: rgba(0,0,0,0.2);
-  padding: 5px 10px;
-  border-radius: 12px;
-  box-shadow: 1px 1px 5px rgba(0,0,0,0.3);
-}
-
-/* Floating emojis */
-.floating-emoji {
-  position: absolute;
-  font-size: 2rem;
-  animation-name: floatUp;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  opacity: 0.8;
-}
-
-@keyframes floatUp {
-  0% {transform: translateY(100vh) rotate(0deg);}
-  50% {transform: translateY(50vh) rotate(180deg);}
-  100% {transform: translateY(-10vh) rotate(360deg);}
-}
-
-.ngo-title {
+.welcome-text {
   font-size: 3rem;
+  font-weight: bold;
   margin-bottom: 20px;
-  text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+  animation: zoomIn 2s ease-in-out;
 }
 
-.quote {
+.welcome-subtext {
   font-size: 1.5rem;
-  font-style: italic;
-  margin-bottom: 40px;
-  max-width: 800px;
-  animation: fadeIn 2s;
+  animation: fadeIn 3s ease-in-out;
 }
 
+/* Animations */
 @keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity: 1;}
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-.enter-button {
-  padding: 12px 30px;
-  border-radius: 25px;
-  background-color: #ff6b6b;
-  color: white;
-  border: none;
-  font-size: 1rem;
-  cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-  transition: transform 0.2s, background-color 0.3s;
-}
-
-.enter-button:hover {
-  transform: scale(1.1);
-  background-color: #ff4757;
+@keyframes zoomIn {
+  from { transform: scale(0); }
+  to { transform: scale(1); }
 }

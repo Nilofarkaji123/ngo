@@ -3,57 +3,46 @@ import "./Register.css";
 import { useNavigate } from "react-router-dom";
 
 const Register = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+
   const navigate = useNavigate();
 
-  const handleRegister = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    try {
-      const formData = new URLSearchParams();
-      formData.append("name", name);
-      formData.append("email", email);
-      formData.append("password", password);
-
-      // POST request to backend register API
-      const response = await fetch("http://localhost:8082/ngo/api/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: formData.toString(),
-      });
-
-      const data = await response.json();
-
-      // Handle backend response
-      if (data.status === "success") {
-        alert("Registration Successful 🎉");
-        navigate("/login"); // redirect to login page
-      } else if (data.status === "email_exists") {
-        alert("Email already registered ❌");
-      } else {
-        alert(data.message || "Registration Failed ❌");
-      }
-    } catch (err) {
-      console.error(err);
-      alert("Server error ❌");
+    if (formData.password !== formData.confirmPassword) {
+      alert("Passwords do not match ❌");
+      return;
     }
+
+    alert("Registration Successful 🎉");
+    navigate("/login");
+  };
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   return (
     <div className="register-container">
       <div className="register-card">
-        <h2>Create Your Account ✨</h2>
-        <p>Join Helping Universe NGO to make a difference!</p>
-        <form onSubmit={handleRegister}>
+        <h2>Join Helping Universe 🌍</h2>
+        <p>Become part of a change-making community</p>
+
+        <form onSubmit={handleSubmit}>
           <div className="input-group">
-            <label>Name</label>
+            <label>Full Name</label>
             <input
               type="text"
-              placeholder="Enter your name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              name="name"
+              placeholder="Enter your full name"
+              value={formData.name}
+              onChange={handleChange}
               required
             />
           </div>
@@ -62,9 +51,10 @@ const Register = () => {
             <label>Email</label>
             <input
               type="email"
+              name="email"
               placeholder="Enter your email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={formData.email}
+              onChange={handleChange}
               required
             />
           </div>
@@ -73,14 +63,29 @@ const Register = () => {
             <label>Password</label>
             <input
               type="password"
-              placeholder="Enter your password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              name="password"
+              placeholder="Enter password"
+              value={formData.password}
+              onChange={handleChange}
               required
             />
           </div>
 
-          <button type="submit" className="register-btn">Register</button>
+          <div className="input-group">
+            <label>Confirm Password</label>
+            <input
+              type="password"
+              name="confirmPassword"
+              placeholder="Re-enter password"
+              value={formData.confirmPassword}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <button type="submit" className="register-btn">
+            Register
+          </button>
 
           <p className="login-link">
             Already have an account?{" "}
