@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Welcome from "./pages/Welcome";
 import Home from "./pages/Home";
 import DonateOptions from "./pages/DonateOptions";
@@ -18,13 +18,14 @@ import "aos/dist/aos.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
-function App() {
+function Layout() {
+  const location = useLocation();
+
   return (
-    <Router>
-      
-      <Header />
-      {/* Other components like Home, Routes, Footer */}
-    
+    <>
+      {/* Hide Header on welcome page */}
+      {location.pathname !== "/" && <Header />}
+
       <Routes>
         <Route path="/" element={<Welcome />} />
         <Route path="/home" element={<Home />} />
@@ -46,12 +47,27 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
-        <Route path="*" element={<h1 style={{ textAlign: "center", marginTop: "50px" }}>404 Page Not Found</h1>} />
+        <Route path="*"
+          element={
+            <h1 style={{ textAlign: "center", marginTop: "50px" }}>
+              404 Page Not Found
+            </h1>
+          }
+        />
       </Routes>
 
-      <Footer />
+      {/* Hide Footer on welcome page */}
+      {location.pathname !== "/" && <Footer />}
+    </>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <Layout />
     </Router>
   );
 }
 
-export default App;   // ✅ Required
+export default App;

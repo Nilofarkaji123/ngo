@@ -1,34 +1,95 @@
+/* Container */
 .welcome-container {
+  position: relative;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: linear-gradient(135deg, #003B8E, #008DFF);
-  color: white;
+  overflow: hidden;
+  color: #003366;
   text-align: center;
-  animation: fadeIn 2s ease-in-out;
+  transition: background 2s ease-in-out; /* smooth background change */
 }
 
-.welcome-text {
+/* Particles */
+.particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  bottom: -10px;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation-name: floatRandom;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+/* Particle Animation */
+@keyframes floatRandom {
+  0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
+  25% { opacity: 0.5; }
+  50% { opacity: 1; }
+  100% { transform: translateY(-110vh) translateX(50px) rotate(360deg); opacity: 0; }
+}
+
+/* Center Content */
+.welcome-content {
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Welcome Top Text */
+.welcome-top-text {
   font-size: 3rem;
-  font-weight: bold;
-  margin-bottom: 20px;
-  animation: zoomIn 2s ease-in-out;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: #0059b3;
+  animation: bounceFade 2s ease-in-out infinite;
+  text-shadow: 0 0 10px rgba(0, 102, 204, 0.6);
 }
 
-.welcome-subtext {
-  font-size: 1.5rem;
-  animation: fadeIn 3s ease-in-out;
+/* Logo */
+.welcome-logo {
+  width: 350px;
+  height: auto;
+  margin-bottom: 30px;
+  animation: logoZoom 3s ease-in-out forwards;
+  transform-origin: center;
+  filter: drop-shadow(0 0 20px #00bfff);
+}
+
+/* NGO-CONNECT Text */
+.welcome-text {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: #002244;
+  animation: textGlowBounce 3s ease-in-out infinite;
+  text-shadow: 0 0 15px #00bfff, 0 0 25px #3399ff, 0 0 35px #66ccff;
 }
 
 /* Animations */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+@keyframes bounceFade {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  50% { transform: translateY(-15px); opacity: 0.8; }
 }
 
-@keyframes zoomIn {
-  from { transform: scale(0); }
-  to { transform: scale(1); }
+@keyframes logoZoom {
+  0% { transform: scale(0.3); opacity: 0; }
+  50% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes textGlowBounce {
+  0%, 100% { transform: translateY(0); opacity: 1; text-shadow: 0 0 15px #00bfff, 0 0 25px #3399ff, 0 0 35px #66ccff; }
+  50% { transform: translateY(-10px); opacity: 0.9; text-shadow: 0 0 25px #00bfff, 0 0 35px #3399ff, 0 0 45px #66ccff; }
 }
