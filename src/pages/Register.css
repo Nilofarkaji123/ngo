@@ -1,0 +1,64 @@
+.home-container {
+  text-align: center;
+  padding: 50px 20px;
+  background: #ffffff;
+  min-height: 100vh;
+}
+
+.header-section {
+  margin-bottom: 30px;
+}
+
+.earth-logo {
+  width: 120px;
+  height: 120px;
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+.title {
+  font-size: 48px;
+  font-weight: 800;
+  margin-top: 10px;
+  color: #333;
+}
+
+.subtitle {
+  font-size: 20px;
+  margin-bottom: 30px;
+  color: #666;
+}
+
+.tagline {
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.donate-btn {
+  background-color: #e91e63;
+  color: white;
+  padding: 14px 32px;
+  border: none;
+  border-radius: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.donate-btn:hover {
+  background-color: #c2185b;
+}
+
+.about-section {
+  margin-top: 50px;
+  padding: 20px;
+}
+
+.about-section h2 {
+  font-size: 32px;
+  margin-bottom: 15px;
+}

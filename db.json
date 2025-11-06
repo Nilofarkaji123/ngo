@@ -1,0 +1,22 @@
+{
+  "foodDonations": [
+    {
+      "id": 1,
+      "foodName": "Pizza",
+      "quantity": "5 boxes",
+      "quality": "Good",
+      "bestBefore": "2025-10-28",
+      "lat": 19.0760,
+      "lng": 72.8777
+    },
+    {
+      "id": 2,
+      "foodName": "Rice",
+      "quantity": "50 kg",
+      "quality": "Fresh",
+      "bestBefore": "2025-11-05",
+      "lat": 28.6139,
+      "lng": 77.2090
+    }
+  ]
+}

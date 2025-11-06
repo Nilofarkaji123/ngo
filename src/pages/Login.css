@@ -1,0 +1,119 @@
+/* BODY / PAGE STYLE */
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: #ffffff;
+}
+
+/* NAVBAR */
+.navbar {
+  width: 100%;
+  padding: 18px 60px;
+  background: white;
+  box-shadow: 0 2px 18px rgba(0,0,0,0.09);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+}
+
+/* LOGO WITH EARTH */
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.earth-icon {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+}
+
+.brand-name {
+  font-size: 26px;
+  color: #0c7a3a;
+  font-weight: 700;
+}
+
+/* NAV LINKS */
+.top-links a {
+  margin-left: 26px;
+  font-size: 18px;
+  color: #333;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.top-links a:hover {
+  color: #0c7a3a;
+}
+
+/* HERO SECTION */
+.hero-section {
+  text-align: center;
+  margin-top: 115px;
+  padding: 0 20px;
+}
+
+.hero-section h2 {
+  font-size: 42px;
+  font-weight: 700;
+  color: #111;
+}
+
+.hero-section p {
+  margin-top: 8px;
+  font-size: 18px;
+  color: #444;
+}
+
+/* GLASS BUTTON STYLE */
+.button-box {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}
+
+.glass-btn {
+  padding: 16px 50px;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 30px;
+  text-decoration: none;
+  backdrop-filter: blur(14px);
+  background: rgba(255,255,255,0.25);
+  border: 1.8px solid rgba(255,255,255,0.45);
+  color: #333;
+  transition: 0.3s ease-in-out;
+}
+
+/* Hover Effects */
+.glass-btn:hover {
+  transform: translateY(-3px);
+  background: rgba(255,255,255,0.5);
+}
+
+/* Donate Alert Color Accent */
+.donate {
+  border-color: #ff2e6d;
+  color: #ff2e6d;
+}
+
+.donate:hover {
+  background: #ff2e6d;
+  color: white;
+}
+
+/* Volunteers Button Accent */
+.volunteer {
+  border-color: #0c7a3a;
+  color: #0c7a3a;
+}
+
+.volunteer:hover {
+  background: #0c7a3a;
+  color: white;
+}
