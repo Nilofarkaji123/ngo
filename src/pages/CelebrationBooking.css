@@ -1,0 +1,79 @@
+.celebration-booking-container {
+  text-align: center;
+  padding: 40px 20px;
+  border-radius: 15px;
+  margin: 30px auto;
+  width: 90%;
+  max-width: 700px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  color: #2d3436;
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Birthday Theme */
+.birthday-bg {
+  background: linear-gradient(135deg, #ffcccc, #ffd6a5, #fdffb6);
+}
+
+/* Occasion Theme */
+.occasion-bg {
+  background: linear-gradient(135deg, #a8edea, #fed6e3);
+}
+
+.celebration-booking-container h1 {
+  font-size: 2rem;
+  color: #2d3436;
+  margin-bottom: 10px;
+}
+
+.celebration-booking-container p {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 25px;
+}
+
+.celebration-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.celebration-form label {
+  text-align: left;
+  font-weight: bold;
+}
+
+.celebration-form input,
+.celebration-form textarea {
+  padding: 10px;
+  border: 1px solid #b2bec3;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.celebration-form textarea {
+  resize: none;
+  height: 80px;
+}
+
+.celebration-form button {
+  background-color: #6c5ce7;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.celebration-form button:hover {
+  background-color: #00cec9;
+  transform: scale(1.05);
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

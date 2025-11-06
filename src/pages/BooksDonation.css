@@ -1,0 +1,103 @@
+.books-donation-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 30px;
+  background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+  border-radius: 20px;
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.books-donation-container h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  color: #fff;
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+}
+
+.books-donation-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: rgba(255,255,255,0.9);
+  padding: 25px;
+  border-radius: 15px;
+}
+
+.books-donation-form label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.books-donation-form input,
+.books-donation-form select {
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.book-item {
+  border: 2px dotted #555;
+  padding: 15px;
+  border-radius: 12px;
+  position: relative;
+}
+
+.book-item h4 {
+  margin-bottom: 10px;
+}
+
+.book-item button {
+  margin-top: 10px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  background-color: #ff6f61;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.book-item button:hover {
+  background-color: #e64545;
+}
+
+.add-btn,
+.submit-btn {
+  padding: 15px;
+  font-size: 1.2rem;
+  border-radius: 12px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.add-btn {
+  background-color: #f7b32b;
+  color: white;
+}
+
+.add-btn:hover {
+  background-color: #e0a71f;
+}
+
+.submit-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+.submit-btn:hover {
+  background-color: #218838;
+}
+
+.thank-you {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #fff;
+}

@@ -1,0 +1,120 @@
+/* Register.css */
+
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.4),
+      rgba(255, 255, 255, 0.4)
+    ),
+    url("https://images.unsplash.com/photo-1526256262350-7da7584cf5eb")
+      no-repeat center center/cover;
+  font-family: "Poppins", sans-serif;
+}
+
+.register-card {
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  padding: 40px;
+  width: 450px;
+  max-width: 90%;
+  text-align: center;
+  animation: slideIn 1s ease-in-out;
+}
+
+.register-card h2 {
+  color: #0c3b2e;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.register-card p {
+  color: #444;
+  margin-bottom: 25px;
+  font-size: 14px;
+}
+
+.input-group {
+  margin-bottom: 18px;
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 5px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #bbb;
+  border-radius: 10px;
+  font-size: 15px;
+  transition: all 0.3s;
+}
+
+.input-group input:focus {
+  border-color: #0c3b2e;
+  outline: none;
+  box-shadow: 0 0 6px rgba(12, 59, 46, 0.4);
+}
+
+/* 🟢 Register button */
+.register-btn {
+  width: 100%;
+  background: #0c3b2e;
+  color: #fff;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.register-btn:hover {
+  background: #14694d;
+}
+
+/* 🔗 Login link */
+.login-link {
+  margin-top: 18px;
+  font-size: 14px;
+  color: #444;
+}
+
+.login-link span {
+  color: #0c3b2e;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.login-link span:hover {
+  text-decoration: underline;
+}
+
+/* 🎞️ Animation */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  .register-card {
+    width: 90%;
+    padding: 30px 20px;
+  }
+}

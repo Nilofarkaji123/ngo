@@ -1,0 +1,90 @@
+.about-container {
+  padding: 40px;
+  text-align: center;
+  background: linear-gradient(135deg, #f0f8ff, #e3f2fd);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  min-height: 100vh;
+}
+
+.about-header h1 {
+  color: #1e90ff;
+  font-size: 2.8rem;
+  margin-bottom: 10px;
+}
+
+.about-header p {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.about-section {
+  margin: 40px auto;
+  max-width: 800px;
+}
+
+.about-section h2 {
+  color: #0077b6;
+  margin-bottom: 10px;
+}
+
+.about-section p {
+  color: #444;
+  line-height: 1.6;
+}
+
+.about-team {
+  margin: 50px auto;
+}
+
+.team-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+
+.team-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  width: 220px;
+  padding: 20px;
+  transition: 0.3s;
+}
+
+.team-card:hover {
+  transform: translateY(-8px);
+  background: #d0ebff;
+}
+
+.team-card img {
+  width: 100%;
+  border-radius: 50%;
+  height: 180px;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+.team-card h3 {
+  color: #1e88e5;
+  margin-bottom: 5px;
+}
+
+.about-contact {
+  margin-top: 60px;
+  background: #eaf6ff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.about-contact a {
+  color: #1e90ff;
+  text-decoration: none;
+}
+
+.about-contact a:hover {
+  text-decoration: underline;
+}

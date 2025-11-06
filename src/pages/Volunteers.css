@@ -1,0 +1,99 @@
+.volunteers-container {
+  text-align: center;
+  padding: 40px;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #e0f7fa, #f0f8ff);
+  min-height: 100vh;
+}
+
+.volunteers-header h1 {
+  font-size: 2.5rem;
+  color: #0077b6;
+  margin-bottom: 10px;
+}
+
+.volunteers-header p {
+  color: #444;
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 0 auto 40px auto;
+}
+
+.volunteer-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+
+.volunteer-card {
+  background: white;
+  border-radius: 15px;
+  width: 250px;
+  padding: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  transition: 0.3s ease;
+}
+
+.volunteer-card:hover {
+  transform: translateY(-8px);
+  background: #d1f3ff;
+}
+
+.volunteer-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+.volunteer-card h2 {
+  color: #0288d1;
+  font-size: 1.3rem;
+  margin-bottom: 5px;
+}
+
+.volunteer-card h4 {
+  color: #00796b;
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+.volunteer-card p {
+  color: #333;
+  font-style: italic;
+}
+
+.join-section {
+  margin-top: 60px;
+  padding: 30px;
+  background: #e1f5fe;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.join-section h2 {
+  color: #0077b6;
+  margin-bottom: 10px;
+}
+
+.join-section p {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.join-section button {
+  background-color: #0077b6;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.join-section button:hover {
+  background-color: #004e89;
+}
