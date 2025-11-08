@@ -234,3 +234,23 @@ p {
 .food-donation-form button:hover {
   background: #2ecc71;
 }
+
+/* Remove horizontal scroll and ensure elements fit */
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+  width: 100%;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f2f8ff; /* light bluish background */
+}
+
+* {
+  box-sizing: border-box; /* Include padding/border in width */
+}
+
+/* Links default */
+a {
+  text-decoration: none;
+  color: inherit;
+}

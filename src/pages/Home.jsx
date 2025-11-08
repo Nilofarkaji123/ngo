@@ -50,7 +50,12 @@ const Home = () => {
         <h2 data-aos="fade-left">Donate & Support</h2>
         <div className="donation-grid">
           {donations.map((item, index) => (
-            <div className="donation-card" key={index} data-aos="fade-up" data-aos-delay={index * 80}>
+            <div
+              className="donation-card"
+              key={index}
+              data-aos="fade-up"
+              data-aos-delay={index * 100}
+            >
               <div className="icon">{item.icon}</div>
               <h3>{item.title}</h3>
               <p>{item.desc}</p>
