@@ -1,8 +1,8 @@
 /* Hero Section */
 .hero-section {
-  margin-top: 5px;
+  margin-top:5px;
+  padding-top: 0%;
 }
-
 
 .hero-section img {
   /* margin-top:5px; */
