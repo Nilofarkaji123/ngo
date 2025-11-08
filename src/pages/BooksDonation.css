@@ -2,28 +2,29 @@
   max-width: 800px;
   margin: 40px auto;
   padding: 30px;
-  background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+  background: linear-gradient(135deg, #89f7fe, #66a6ff);
   border-radius: 20px;
   font-family: 'Poppins', sans-serif;
-  color: #333;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  color: #222;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
 }
 
 .books-donation-container h2 {
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 30px;
-  color: #fff;
-  text-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+  color: #ffffff;
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.3);
 }
 
 .books-donation-form {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  background-color: rgba(255,255,255,0.9);
+  background-color: rgba(255, 255, 255, 0.95);
   padding: 25px;
   border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .books-donation-form label {
@@ -31,6 +32,7 @@
   flex-direction: column;
   font-weight: 500;
   font-size: 1rem;
+  color: #0a2540;
 }
 
 .books-donation-form input,
@@ -38,19 +40,29 @@
   padding: 10px;
   margin-top: 5px;
   border-radius: 8px;
-  border: 1px solid #ccc;
+  border: 1px solid #b0c4de;
   font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.books-donation-form input:focus,
+.books-donation-form select:focus {
+  border-color: #1e90ff;
+  box-shadow: 0 0 5px rgba(30, 144, 255, 0.4);
 }
 
 .book-item {
-  border: 2px dotted #555;
+  border: 2px dotted #4682b4;
   padding: 15px;
   border-radius: 12px;
   position: relative;
+  background-color: #f0f8ff;
 }
 
 .book-item h4 {
   margin-bottom: 10px;
+  color: #0a2540;
 }
 
 .book-item button {
@@ -58,14 +70,15 @@
   padding: 8px 12px;
   border: none;
   border-radius: 8px;
-  background-color: #ff6f61;
+  background-color: #1e90ff;
   color: white;
   cursor: pointer;
   font-weight: bold;
+  transition: background-color 0.3s ease;
 }
 
 .book-item button:hover {
-  background-color: #e64545;
+  background-color: #0077cc;
 }
 
 .add-btn,
@@ -76,28 +89,35 @@
   border: none;
   font-weight: bold;
   cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s;
 }
 
 .add-btn {
-  background-color: #f7b32b;
+  background-color: #00bfff;
   color: white;
 }
 
 .add-btn:hover {
-  background-color: #e0a71f;
+  background-color: #0099cc;
+  transform: scale(1.03);
 }
 
 .submit-btn {
-  background-color: #28a745;
+  background-color: #0077cc;
   color: white;
 }
 
 .submit-btn:hover {
-  background-color: #218838;
+  background-color: #005fa3;
+  transform: scale(1.03);
 }
 
 .thank-you {
   text-align: center;
   font-size: 1.2rem;
-  color: #fff;
+  color: #ffffff;
+  padding: 30px;
+  background: linear-gradient(135deg, #6dd5fa, #2980b9);
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
