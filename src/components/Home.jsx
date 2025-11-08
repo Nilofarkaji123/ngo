@@ -1,7 +1,19 @@
 import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { useNavigate } from "react-router-dom";
+import Slideshow from "../components/Slideshow";
+import {
+  FaBookOpen,
+  FaUtensils,
+  FaTshirt,
+  FaMoneyBillWave,
+  FaClinicMedical,
+  FaBirthdayCake,
+  FaChild,
+  FaSchool,
+  FaCartPlus,
+} from "react-icons/fa";
 import "./Home.css";
 
 const Home = () => {
@@ -11,73 +23,110 @@ const Home = () => {
     AOS.init({ duration: 800, once: true });
   }, []);
 
-  const services = [
-    { title: "Food Donation", desc: "Donate leftover or surplus food with details.", route: "/food-donation" },
-    { title: "Book Donation", desc: "Donate books by category: Story, Academic, Reference.", route: "/books-donation" },
-    { title: "Clothes Donation", desc: "Donate clothes by gender and size for children, women, and men.", route: "/clothes-donation" },
+  const donations = [
+    {
+      icon: <FaUtensils />,
+      title: "Food Donation",
+      desc: "Donate leftover or surplus food with details of quantity, expiry date, and source.",
+      route: "/food-donation",
+    },
+    {
+      icon: <FaBookOpen />,
+      title: "Book Donation",
+      desc: "Donate books by category: Story, Academic, Reference to empower children.",
+      route: "/books-donation",
+    },
+    {
+      icon: <FaTshirt />,
+      title: "Clothes Donation",
+      desc: "Donate clothes by gender and size for children, women, and men.",
+      route: "/clothes-donation",
+    },
+    {
+      icon: <FaMoneyBillWave />,
+      title: "Money Donation",
+      desc: "Financial support for NGO projects, school supplies, and family aid.",
+      route: "/money-donation",
+    },
+    {
+      icon: <FaClinicMedical />,
+      title: "Medical Support",
+      desc: "Donate medical supplies or funds linked with partner hospitals.",
+      route: "/medical-donation",
+    },
+    {
+      icon: <FaBirthdayCake />,
+      title: "Event Celebration",
+      desc: "Support birthday parties, celebrations, and special events for children.",
+      route: "/event-support",
+    },
+    {
+      icon: <FaChild />,
+      title: "Adopt a Child",
+      desc: "Support a child: specify age, gender, and contact support for more info.",
+      route: "/adopt-child",
+    },
+    {
+      icon: <FaSchool />,
+      title: "Education Support",
+      desc: "Donate for school fees, stationery, scholarships, or online learning programs.",
+      route: "/education-support",
+    },
+    {
+      icon: <FaCartPlus />,
+      title: "Grocery Donation",
+      desc: "Donate groceries for families in need, providing real-time tracking of items.",
+      route: "/grocery-donation",
+    },
   ];
 
   return (
     <div className="home-container">
-      <section className="hero-section">
-        <div className="hero-content" data-aos="fade-up">
-          <h1>Empowering Lives Through Kindness</h1>
-          <p>Together, we build a world where every child and family thrives.</p>
-          <button onClick={() => navigate("/donate-options")}>Donate Now</button>
-        </div>
-      </section>
+      {/* Hero / Slideshow */}
+      <section className="hero-section" data-aos="fade-up">
+  <Slideshow />
+</section>
 
-      <section className="about-section" data-aos="fade-up">
+
+      {/* About Section */}
+      <section className="about-section" data-aos="fade-right">
         <h2>Who We Are</h2>
         <p>
-          HelpingHand is a non-profit organization dedicated to supporting children and families in need.
-          Our mission is to create a world where every child has access to education, nutrition, and care.
+          <strong>HelpingHand</strong> is a non-profit organization dedicated to
+          supporting children and families in need. Our mission is to create a
+          world where every child has access to education, nutrition, and care.
         </p>
       </section>
 
-      <section className="services-section" data-aos="fade-up">
-        <h2>What We Do</h2>
-        <div className="services-grid">
-          {services.map((sv, idx) => (
-            <div key={idx} className="service-card" data-aos="zoom-in" data-aos-delay={idx*150}>
-              <h3>{sv.title}</h3>
-              <p>{sv.desc}</p>
-              <button onClick={() => navigate(sv.route)}>Learn More</button>
+      {/* Donations Section */}
+      <section className="donations-section" data-aos="fade-up">
+        <h2>Donate & Support</h2>
+        <div className="donation-grid">
+          {donations.map((item, index) => (
+            <div
+              className="donation-card"
+              key={index}
+              data-aos="fade-up"
+              data-aos-delay={index * 80}
+            >
+              <div className="icon">{item.icon}</div>
+              <h3>{item.title}</h3>
+              <p>{item.desc}</p>
+              <button onClick={() => navigate(item.route)}>
+                Donate / Support
+              </button>
             </div>
           ))}
         </div>
       </section>
 
-      <section className="cta-section" data-aos="fade-up">
-        <h2>Join Our Mission</h2>
-        <p>Become a volunteer, support a child, or donate towards our cause.</p>
-        <button onClick={() => navigate("/volunteers")}>Get Involved</button>
+      {/* Inspirational Quotes */}
+      <section className="quotes-section" data-aos="fade-up">
+        <h2>Inspirational Thoughts</h2>
+        <p>“Education is the most powerful weapon which you can use to change the world.” — Nelson Mandela</p>
+        <p>“An investment in knowledge pays the best interest.” — Benjamin Franklin</p>
+        <p>“Every child deserves a happy and healthy childhood.” — Anonymous</p>
       </section>
-
-      <footer className="footer-section" data-aos="fade-up">
-        <div className="footer-content">
-          <div className="footer-brand">
-            <h3>NGO-CONNECT</h3>
-            <p>Connecting hearts to help those in need.</p>
-          </div>
-          <div className="footer-links">
-            <h4>Quick Links</h4>
-            <ul>
-              <li onClick={()=>navigate("/home")}>Home</li>
-              <li onClick={()=>navigate("/donate-options")}>Donate</li>
-              <li onClick={()=>navigate("/about")}>About Us</li>
-              <li onClick={()=>navigate("/contact")}>Contact</li>
-            </ul>
-          </div>
-          <div className="footer-contact">
-            <h4>Contact</h4>
-            <p>📞 +91 9876543210<br/>📧 info@ngo-connect.org</p>
-          </div>
-        </div>
-        <div className="footer-bottom">
-          © 2025 NGO-CONNECT | All Rights Reserved.
-        </div>
-      </footer>
     </div>
   );
 };

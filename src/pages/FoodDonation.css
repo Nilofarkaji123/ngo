@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* Main Container */
 .food-donation-container {
   max-width: 950px;
@@ -70,9 +71,39 @@
 
 /* Labels & Inputs */
 .food-donation-form label {
+=======
+.food-donation-page {
+  max-width: 500px;
+  margin: 100px auto 50px; /* top margin to leave space after header */
+  padding: 2rem;
+  background: linear-gradient(145deg, #cce0ff, #99ccff); /* blueish gradient */
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  text-align: center;
+  color: #003B8E;
+  font-family: 'Poppins', sans-serif;
+}
+
+.food-donation-page h2 {
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  color: #003366;
+  text-shadow: 0 0 5px #66ccff;
+}
+
+.food-donation-page form {
   display: flex;
   flex-direction: column;
+  gap: 1rem;
+}
+
+.food-donation-page label {
+>>>>>>> 236add8be1fa8e4b91a4ea5fbc854e46e14dbd2e
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
   font-weight: 500;
+<<<<<<< HEAD
   color: #e0e8ef;
   font-size: 1rem;
 }
@@ -156,4 +187,62 @@
   border-radius: 15px;
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: #e8f0f8;
+=======
+}
+
+.food-donation-page input {
+  margin-top: 5px;
+  padding: 0.7rem 10px;
+  border-radius: 8px;
+  border: 1px solid #0077cc;
+  outline: none;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+.food-donation-page input:focus {
+  border-color: #005fa3;
+  box-shadow: 0 0 8px #66ccff;
+}
+
+.food-donation-page button {
+  margin-top: 10px;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 25px;
+  background: #0077cc;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.food-donation-page select {
+  margin-top: 5px;
+  padding: 0.7rem 10px;
+  border-radius: 8px;
+  border: 1px solid #0077cc;
+  outline: none;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+.food-donation-page select:focus {
+  border-color: #005fa3;
+  box-shadow: 0 0 8px #66ccff;
+}
+
+
+.food-donation-page button:hover {
+  background: #005fa3;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .food-donation-page {
+    margin: 80px 15px 40px;
+    padding: 1.5rem;
+  }
+>>>>>>> 236add8be1fa8e4b91a4ea5fbc854e46e14dbd2e
 }
