@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import "./BooksDonation.css";
 
 const BooksDonation = () => {
@@ -22,20 +23,23 @@ const BooksDonation = () => {
     setItems(newItems);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!ngoName) {
       alert("Please enter NGO Name");
       return;
     }
-    for (let item of items) {
-      if (!item.category || !item.quantity || item.quantity <= 0) {
-        alert("All fields are required and quantity must be positive");
-        return;
-      }
+
+    try {
+      await axios.post("http://localhost:8082/ngo/books-donation", {
+        ngoName,
+        items,
+      });
+      setSubmitted(true);
+    } catch (err) {
+      console.error("Error submitting donation:", err);
+      alert("Failed to submit donation. Check backend connection.");
     }
-    setSubmitted(true);
-    console.log("Books Donation Submitted:", { ngoName, items });
   };
 
   return (
