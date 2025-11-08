@@ -9,7 +9,7 @@ const Welcome = () => {
     // Redirect to Home after 3 seconds
     const timer = setTimeout(() => {
       navigate("/home");
-    }, 3000);
+    }, 4000);
 
     return () => clearTimeout(timer);
   }, [navigate]);

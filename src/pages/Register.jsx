@@ -12,7 +12,11 @@ const Register = () => {
 
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (formData.password !== formData.confirmPassword) {
@@ -20,13 +24,38 @@ const Register = () => {
       return;
     }
 
-    alert("Registration Successful 🎉");
-    navigate("/login");
-  };
+    try {
+      // Create URL-encoded form data (works well with Java Servlet backend)
+      const formBody = new URLSearchParams();
+      formBody.append("name", formData.name);
+      formBody.append("email", formData.email);
+      formBody.append("password", formData.password);
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+      const response = await fetch("http://localhost:8082/ngo/api/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: formBody.toString(),
+      });
+
+      if (!response.ok) {
+        throw new Error("Server error");
+      }
+
+      const data = await response.json();
+
+      if (data.success) {
+        alert("🎉 Registration Successful! Please login now.");
+        navigate("/login");
+      } else {
+        alert(`⚠️ Registration failed: ${data.message || "Try again"}`);
+      }
+    } catch (error) {
+      console.error("Error during registration:", error);
+      alert("❌ Something went wrong while registering. Please try again.");
+    }
+  }; 
 
   return (
     <div className="register-container">

@@ -1,119 +1,124 @@
-/* BODY / PAGE STYLE */
-body {
-  margin: 0;
+/* Login.css */
+
+/* 🌈 Background setup */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.4),
+      rgba(0, 0, 0, 0.4)
+    ),
+    url("https://images.unsplash.com/photo-1509099836639-18ba1795216d")
+      no-repeat center center/cover;
   font-family: "Poppins", sans-serif;
-  background: #ffffff;
 }
 
-/* NAVBAR */
-.navbar {
-  width: 100%;
-  padding: 18px 60px;
-  background: white;
-  box-shadow: 0 2px 18px rgba(0,0,0,0.09);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: sticky;
-  top: 0;
+/* 🧩 Login card */
+.login-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  padding: 40px;
+  width: 400px;
+  max-width: 90%;
+  text-align: center;
+  animation: fadeIn 1s ease-in;
 }
 
-/* LOGO WITH EARTH */
-.logo-area {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.earth-icon {
-  width: 48px;
-  height: 48px;
-  object-fit: cover;
-}
-
-.brand-name {
-  font-size: 26px;
-  color: #0c7a3a;
+/* ✨ Header text */
+.login-card h2 {
+  color: #2a3d66;
   font-weight: 700;
+  margin-bottom: 10px;
 }
 
-/* NAV LINKS */
-.top-links a {
-  margin-left: 26px;
-  font-size: 18px;
+.login-card p {
+  color: #555;
+  margin-bottom: 25px;
+  font-size: 14px;
+}
+
+/* 🧱 Input fields */
+.input-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  font-weight: 600;
   color: #333;
-  text-decoration: none;
+  margin-bottom: 6px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 15px;
   transition: 0.3s;
 }
 
-.top-links a:hover {
-  color: #0c7a3a;
+.input-group input:focus {
+  border-color: #2a3d66;
+  outline: none;
+  box-shadow: 0 0 6px rgba(42, 61, 102, 0.4);
 }
 
-/* HERO SECTION */
-.hero-section {
-  text-align: center;
-  margin-top: 115px;
-  padding: 0 20px;
+/* 🟢 Login button */
+.login-btn {
+  width: 100%;
+  background: #2a3d66;
+  color: #fff;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 16px;
+  transition: 0.3s;
 }
 
-.hero-section h2 {
-  font-size: 42px;
-  font-weight: 700;
-  color: #111;
+.login-btn:hover {
+  background: #3b5fa3;
 }
 
-.hero-section p {
-  margin-top: 8px;
-  font-size: 18px;
+/* 🔗 Register link */
+.register-link {
+  margin-top: 18px;
+  font-size: 14px;
   color: #444;
 }
 
-/* GLASS BUTTON STYLE */
-.button-box {
-  margin-top: 40px;
-  display: flex;
-  justify-content: center;
-  gap: 25px;
-}
-
-.glass-btn {
-  padding: 16px 50px;
-  font-size: 18px;
+.register-link span {
+  color: #2a3d66;
   font-weight: 600;
-  border-radius: 30px;
-  text-decoration: none;
-  backdrop-filter: blur(14px);
-  background: rgba(255,255,255,0.25);
-  border: 1.8px solid rgba(255,255,255,0.45);
-  color: #333;
-  transition: 0.3s ease-in-out;
+  cursor: pointer;
 }
 
-/* Hover Effects */
-.glass-btn:hover {
-  transform: translateY(-3px);
-  background: rgba(255,255,255,0.5);
+.register-link span:hover {
+  text-decoration: underline;
 }
 
-/* Donate Alert Color Accent */
-.donate {
-  border-color: #ff2e6d;
-  color: #ff2e6d;
+/* 🎞️ Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.donate:hover {
-  background: #ff2e6d;
-  color: white;
-}
-
-/* Volunteers Button Accent */
-.volunteer {
-  border-color: #0c7a3a;
-  color: #0c7a3a;
-}
-
-.volunteer:hover {
-  background: #0c7a3a;
-  color: white;
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  .login-card {
+    width: 90%;
+    padding: 30px 20px;
+  }
 }

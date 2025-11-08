@@ -1,64 +1,120 @@
-.home-container {
+/* Register.css */
+
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.4),
+      rgba(255, 255, 255, 0.4)
+    ),
+    url("https://images.unsplash.com/photo-1526256262350-7da7584cf5eb")
+      no-repeat center center/cover;
+  font-family: "Poppins", sans-serif;
+}
+
+.register-card {
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  padding: 40px;
+  width: 450px;
+  max-width: 90%;
   text-align: center;
-  padding: 50px 20px;
-  background: #ffffff;
-  min-height: 100vh;
+  animation: slideIn 1s ease-in-out;
 }
 
-.header-section {
-  margin-bottom: 30px;
+.register-card h2 {
+  color: #0c3b2e;
+  font-weight: 700;
+  margin-bottom: 10px;
 }
 
-.earth-logo {
-  width: 120px;
-  height: 120px;
-  animation: float 4s ease-in-out infinite;
+.register-card p {
+  color: #444;
+  margin-bottom: 25px;
+  font-size: 14px;
 }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-12px); }
+.input-group {
+  margin-bottom: 18px;
+  text-align: left;
 }
 
-.title {
-  font-size: 48px;
-  font-weight: 800;
-  margin-top: 10px;
-  color: #333;
+.input-group label {
+  display: block;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 5px;
 }
 
-.subtitle {
-  font-size: 20px;
-  margin-bottom: 30px;
-  color: #666;
+.input-group input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #bbb;
+  border-radius: 10px;
+  font-size: 15px;
+  transition: all 0.3s;
 }
 
-.tagline {
-  font-size: 22px;
-  margin-bottom: 20px;
+.input-group input:focus {
+  border-color: #0c3b2e;
+  outline: none;
+  box-shadow: 0 0 6px rgba(12, 59, 46, 0.4);
 }
 
-.donate-btn {
-  background-color: #e91e63;
-  color: white;
-  padding: 14px 32px;
+/* 🟢 Register button */
+.register-btn {
+  width: 100%;
+  background: #0c3b2e;
+  color: #fff;
+  padding: 12px;
   border: none;
   border-radius: 10px;
-  font-size: 20px;
   cursor: pointer;
+  font-weight: 600;
+  font-size: 16px;
   transition: 0.3s;
 }
 
-.donate-btn:hover {
-  background-color: #c2185b;
+.register-btn:hover {
+  background: #14694d;
 }
 
-.about-section {
-  margin-top: 50px;
-  padding: 20px;
+/* 🔗 Login link */
+.login-link {
+  margin-top: 18px;
+  font-size: 14px;
+  color: #444;
 }
 
-.about-section h2 {
-  font-size: 32px;
-  margin-bottom: 15px;
+.login-link span {
+  color: #0c3b2e;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.login-link span:hover {
+  text-decoration: underline;
+}
+
+/* 🎞️ Animation */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  .register-card {
+    width: 90%;
+    padding: 30px 20px;
+  }
 }
