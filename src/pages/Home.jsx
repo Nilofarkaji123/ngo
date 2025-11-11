@@ -39,8 +39,8 @@ const Home = () => {
       <section className="about-section" data-aos="fade-right">
         <h2>Who We Are</h2>
         <p>
-          <strong>HelpingHand</strong> is a non-profit organization dedicated to
-          supporting children and families in need. Our mission is to create a world where
+          <strong>NGO-CONNECT</strong> is a non-profit organization dedicated to
+          supporting children . Our mission is to create a world where
           every child has access to education, nutrition, and care.
         </p>
       </section>

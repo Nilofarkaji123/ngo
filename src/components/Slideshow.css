@@ -2,8 +2,8 @@
   width: 100%;
   height: calc(100vh - 60px); /* full viewport minus header height */
   overflow: hidden;
-  /* margin: 0; remove any default margins */
   margin-top: 5px;
+  position: relative; /* needed for overlay positioning */
 }
 
 .slideshow img {
@@ -13,4 +13,34 @@
   display: block;
   object-position: top;
   margin-top: 0%;
+}
+
+/* Overlay container for text (middle right) */
+.overlay {
+  position: absolute;
+  top: 50%;          /* vertically center */
+  right: 40px;       /* distance from right */
+  transform: translateY(-50%);
+  color: #1E90FF;    /* blue color */
+  text-align: right;
+  padding: 10px 20px;
+  max-width: 50%;    /* slightly wider for big text */
+  z-index: 2;
+}
+
+/* Animated text */
+.fade-text {
+  font-size: 2.2rem;       /* increased font size */
+  font-weight: 700;        /* bolder text */
+  line-height: 1.2;        /* tighter spacing */
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.6); /* more shadow for readability */
+  opacity: 0;
+  animation: fadeInOut 4s linear forwards;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(-10px); }
+  10% { opacity: 1; transform: translateY(0); }
+  90% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-10px); }
 }

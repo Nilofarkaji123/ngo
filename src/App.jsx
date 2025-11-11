@@ -6,7 +6,6 @@ import FoodDonation from "./pages/FoodDonation";
 import BooksDonation from "./pages/BooksDonation";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import BirthdayBooking from "./pages/BirthdayBooking";
 import OccasionBooking from "./pages/OccasionBooking";
 import ClothesDonation from "./pages/ClothesDonation";
 import OldThingsDonation from "./pages/OldThingsDonation";
@@ -14,6 +13,10 @@ import MoneyDonation from "./pages/MoneyDonation";
 import Activities from "./pages/Activities";
 import AboutUs from "./pages/AboutUs";
 import Volunteers from "./pages/Volunteers";
+import EventSupport from "./pages/EventSupport";
+import ThankYouLetter from "./pages/ThankYouLetter";
+import AdoptChild from "./pages/AdoptChild";
+
 import "aos/dist/aos.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -21,10 +24,12 @@ import Footer from "./components/Footer";
 function Layout() {
   const location = useLocation();
 
+  // ✅ Hide Header & Footer on Welcome and Thank You page
+  const hideHeaderFooter = location.pathname === "/" || location.pathname === "/thank-you";
+
   return (
     <>
-      {/* Hide Header on welcome page */}
-      {location.pathname !== "/" && <Header />}
+      {!hideHeaderFooter && <Header />}
 
       <Routes>
         <Route path="/" element={<Welcome />} />
@@ -37,27 +42,23 @@ function Layout() {
         <Route path="/clothes-donation" element={<ClothesDonation />} />
         <Route path="/oldthings-donation" element={<OldThingsDonation />} />
         <Route path="/money-donation" element={<MoneyDonation />} />
+        <Route path="/adopt-child" element={<AdoptChild />} />
+        
+        <Route path="/event-support" element={<EventSupport />} />
+        <Route path="/occasion-booking" element={<OccasionBooking />} />
+
+        <Route path="/thank-you" element={<ThankYouLetter />} />
 
         <Route path="/about" element={<AboutUs />} />
         <Route path="/volunteers" element={<Volunteers />} />
 
-        <Route path="/birthday-booking" element={<BirthdayBooking />} />
-        <Route path="/occasion-booking" element={<OccasionBooking />} />
-
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
-        <Route path="*"
-          element={
-            <h1 style={{ textAlign: "center", marginTop: "50px" }}>
-              404 Page Not Found
-            </h1>
-          }
-        />
+        <Route path="*" element={<h1 style={{ textAlign: "center", marginTop: "50px" }}>404 Page Not Found</h1>} />
       </Routes>
 
-      {/* Hide Footer on welcome page */}
-      {location.pathname !== "/" && <Footer />}
+      {!hideHeaderFooter && <Footer />}
     </>
   );
 }

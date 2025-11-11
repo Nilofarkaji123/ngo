@@ -1,0 +1,52 @@
+.event-support-container {
+  max-width: 600px;
+  margin: auto;
+  padding: 30px;
+  text-align: center;
+}
+
+.subtitle {
+  color: #555;
+  font-size: 1rem;
+  margin-bottom: 25px;
+}
+
+.event-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background: #f7fbff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+.event-form label {
+  text-align: left;
+  font-weight: 600;
+  color: #003366;
+}
+
+.event-form select,
+.event-form input {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #888;
+  outline: none;
+}
+
+.event-form button {
+  margin-top: 10px;
+  padding: 12px;
+  background: #0055cc;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.event-form button:hover {
+  background: #003c99;
+}
