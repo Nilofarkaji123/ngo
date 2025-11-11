@@ -13,14 +13,49 @@ const ClothesDonation = () => {
     message: "",
   });
 
+  // Handle input changes
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  // Handle form submit (connect to Java backend)
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert("👕 Clothes donation request submitted successfully!");
-    console.log("Clothes Donation Data:", form);
+
+    try {
+      const response = await fetch("http://localhost:8082/ngo/clothesDonation",
+ {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: new URLSearchParams(form).toString(),
+      });
+
+      const data = await response.json();
+
+      if (data.status === "success") {
+        alert("👕 Clothes donation request submitted successfully!");
+        console.log("Clothes Donation Data:", form);
+
+        // Reset form after successful submission
+        setForm({
+          donorName: "",
+          ngoName: "",
+          quantity: "",
+          condition: "",
+          pickupAddress: "",
+          pickupDate: "",
+          contactNumber: "",
+          message: "",
+        });
+      } else {
+        alert("❌ Failed to submit donation. Try again!");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("⚠️ Server not reachable! Please start your Tomcat server.");
+    }
   };
 
   return (
@@ -58,7 +93,12 @@ const ClothesDonation = () => {
         />
 
         <label>Condition of Clothes:</label>
-        <select name="condition" value={form.condition} onChange={handleChange} required>
+        <select
+          name="condition"
+          value={form.condition}
+          onChange={handleChange}
+          required
+        >
           <option value="">Select Condition</option>
           <option value="New">New</option>
           <option value="Gently Used">Gently Used</option>
@@ -107,5 +147,6 @@ const ClothesDonation = () => {
     </div>
   );
 };
+
 
 export default ClothesDonation;

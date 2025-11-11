@@ -14,17 +14,12 @@ const Welcome = () => {
   ];
 
   useEffect(() => {
-<<<<<<< HEAD
-    // Redirect to Home after 3 seconds
-    const timer = setTimeout(() => {
-      navigate("/home");
-    }, 4000);
-=======
+    // Background animation
     const bgTimer = setInterval(() => {
-      setBgIndex(prev => (prev + 1) % backgrounds.length);
+      setBgIndex((prev) => (prev + 1) % backgrounds.length);
     }, 3000);
->>>>>>> 236add8be1fa8e4b91a4ea5fbc854e46e14dbd2e
 
+    // Redirect to Home after 10 seconds
     const timer = setTimeout(() => {
       navigate("/home");
     }, 10000);
@@ -37,7 +32,6 @@ const Welcome = () => {
 
   return (
     <div className="welcome-container" style={{ background: backgrounds[bgIndex] }}>
-      
       {/* Particles */}
       <div className="particles">
         {[...Array(50)].map((_, i) => {
@@ -45,7 +39,9 @@ const Welcome = () => {
           const delay = Math.random() * 5;
           const duration = Math.random() * 8 + 5;
           const left = Math.random() * 100 + "%";
-          const color = `rgba(${Math.floor(Math.random()*100)}, ${Math.floor(Math.random()*180 + 50)}, 255, 0.7)`;
+          const color = `rgba(${Math.floor(Math.random() * 100)}, ${
+            Math.floor(Math.random() * 180 + 50)
+          }, 255, 0.7)`;
           return (
             <span
               key={i}
@@ -79,7 +75,7 @@ const Welcome = () => {
         <div className="wave wave3"></div>
       </div>
 
-      {/* Center Content with left-right layout */}
+      {/* Center Content */}
       <div className="welcome-content">
         <img src="/images/front.webp" alt="NGO Logo" className="welcome-logo" />
         <div className="welcome-texts">

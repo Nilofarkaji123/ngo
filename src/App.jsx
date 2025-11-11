@@ -17,6 +17,7 @@ import Volunteers from "./pages/Volunteers";
 import "aos/dist/aos.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import React from "react";
 
 function Layout() {
   const location = useLocation();
@@ -30,24 +31,22 @@ function Layout() {
         <Route path="/" element={<Welcome />} />
         <Route path="/home" element={<Home />} />
         <Route path="/activities" element={<Activities />} />
-
         <Route path="/donate-options" element={<DonateOptions />} />
         <Route path="/food-donation" element={<FoodDonation />} />
         <Route path="/books-donation" element={<BooksDonation />} />
         <Route path="/clothes-donation" element={<ClothesDonation />} />
         <Route path="/oldthings-donation" element={<OldThingsDonation />} />
         <Route path="/money-donation" element={<MoneyDonation />} />
-
         <Route path="/about" element={<AboutUs />} />
         <Route path="/volunteers" element={<Volunteers />} />
-
         <Route path="/birthday-booking" element={<BirthdayBooking />} />
         <Route path="/occasion-booking" element={<OccasionBooking />} />
-
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
-        <Route path="*"
+        {/* 404 Fallback */}
+        <Route
+          path="*"
           element={
             <h1 style={{ textAlign: "center", marginTop: "50px" }}>
               404 Page Not Found
