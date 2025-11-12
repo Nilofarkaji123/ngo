@@ -1,104 +1,112 @@
 import React, { useState } from "react";
-import "./EventSupport.css";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import "./EducationSupport.css";
 
-const EventSupport = () => {
-  const [data, setData] = useState({
-    eventType: "",
-    organizer: "",
-    ngoName: "",
-    date: "",
-    time: "",
-    venue: "",
-    contact: "",
-  });
+const EducationSupport = () => {
+  const [selectedType, setSelectedType] = useState("");
+  const [amount, setAmount] = useState("");
+  const [description, setDescription] = useState("");
+  const [selectedNGO, setSelectedNGO] = useState("");
 
-  const ngos = [
-    "Jeevan Asha Foundation",
-    "Anand Children Care",
-    "Smiles NGO",
-    "Helping Hands Trust"
+  const donationOptions = [
+    { name: "🎓 School Fees", type: "fees", info: "Help a child continue their education by contributing to their school fees." },
+    { name: "✏️ Stationery", type: "stationery", info: "Donate notebooks, pens, and other essentials for students." },
+    { name: "🏅 Scholarships", type: "scholarship", info: "Support talented students with merit-based scholarships." },
+    { name: "💻 Online Learning", type: "online", info: "Contribute to devices or subscriptions for online education." },
   ];
 
-  const handleChange = (e) => {
-    setData({ ...data, [e.target.name]: e.target.value });
-  };
+  const ngoList = [
+    "Bright Future Foundation",
+    "Education For All Trust",
+    "Smile Learning NGO",
+    "Sanjivani Children Foundation",
+  ];
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert("🎉 Celebration Event Booked Successfully!");
-    console.log("Booking Details:", data);
+
+    if (!selectedType || !amount || !selectedNGO) {
+      alert("⚠️ Please fill in all required fields.");
+      return;
+    }
+
+    if (isNaN(amount) || Number(amount) <= 0) {
+      alert("💰 Please enter a valid donation amount.");
+      return;
+    }
+
+    alert(`🎉 Thank you for supporting education through ${selectedNGO}!`);
+    setSelectedType("");
+    setAmount("");
+    setDescription("");
+    setSelectedNGO("");
   };
 
   return (
-    <div className="event-support-container">
-      <h2>🎉 Event & Celebration Support</h2>
-      <p>Support birthday parties, celebrations, and special events for children.</p>
+    <div className="education-support-container" data-aos="fade-up">
+      <h1>🎒 Education Support</h1>
+      <p>Donate for school fees, stationery, scholarships, or online learning programs to empower education for every child.</p>
 
-      <form onSubmit={handleSubmit} className="event-support-form">
+      <div className="education-grid">
+        {donationOptions.map((option, index) => (
+          <div
+            key={index}
+            className={`education-card ${selectedType === option.type ? "active" : ""}`}
+            data-aos="zoom-in"
+            data-aos-delay={index * 150}
+          >
+            <h2>{option.name}</h2>
+            <p>{option.info}</p>
+            <button onClick={() => setSelectedType(option.type)}>
+              {selectedType === option.type ? "Selected ✓" : "Select"}
+            </button>
+          </div>
+        ))}
+      </div>
 
-        <label>Event Type</label>
-        <input
-          type="text"
-          name="eventType"
-          placeholder="Birthday / Festival / Celebration"
-          value={data.eventType}
-          onChange={handleChange}
-          required
-        />
+      {selectedType && (
+        <form className="education-form" onSubmit={handleSubmit} data-aos="fade-up" data-aos-delay="300">
+          <h2>📋 Donation Details</h2>
 
-        <label>Your Name</label>
-        <input
-          type="text"
-          name="organizer"
-          placeholder="Enter your name"
-          value={data.organizer}
-          onChange={handleChange}
-          required
-        />
+          <label>Donation Type:</label>
+          <input type="text" value={selectedType} disabled />
 
-        <label>Select NGO</label>
-        <select
-          name="ngoName"
-          value={data.ngoName}
-          onChange={handleChange}
-          required
-        >
-          <option value="">-- Select NGO --</option>
-          {ngos.map((ngo, index) => (
-            <option key={index} value={ngo}>{ngo}</option>
-          ))}
-        </select>
+          <label>Amount (₹):</label>
+          <input
+            type="number"
+            value={amount}
+            onChange={(e) => setAmount(e.target.value)}
+            placeholder="Enter amount (₹)"
+            required
+          />
 
-        <label>Date</label>
-        <input type="date" name="date" value={data.date} onChange={handleChange} required />
+          <label>NGO / Beneficiary:</label>
+          <select
+            value={selectedNGO}
+            onChange={(e) => setSelectedNGO(e.target.value)}
+            required
+          >
+            <option value="">-- Select NGO --</option>
+            {ngoList.map((ngo, idx) => (
+              <option key={idx} value={ngo}>{ngo}</option>
+            ))}
+          </select>
 
-        <label>Time</label>
-        <input type="time" name="time" value={data.time} onChange={handleChange} required />
+          <label>Message (Optional):</label>
+          <textarea
+            placeholder="Write a note or message for your donation..."
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
 
-        <label>Venue</label>
-        <input
-          type="text"
-          name="venue"
-          placeholder="Enter event venue"
-          value={data.venue}
-          onChange={handleChange}
-          required
-        />
-
-        <label>Contact Number</label>
-        <input
-          type="tel"
-          name="contact"
-          placeholder="Enter your contact number"
-          value={data.contact}
-          onChange={handleChange}
-          required
-        />
-
-        <button type="submit" className="book-btn">Book Event</button>
-      </form>
+          <button type="submit" className="donate-submit-btn">
+            💖 Confirm Donation
+          </button>
+        </form>
+      )}
     </div>
   );
 };
 
-export default EventSupport;
+export default EducationSupport;
