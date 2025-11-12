@@ -1,99 +1,131 @@
 .volunteers-container {
-  text-align: center;
-  padding: 40px;
-  font-family: "Poppins", sans-serif;
-  background: linear-gradient(135deg, #e0f7fa, #f0f8ff);
   min-height: 100vh;
+  background: linear-gradient(135deg, #e3f2fd, #ffffff, #bbdefb);
+  padding: 80px 40px;
+  position: relative;
+  overflow: hidden;
+  font-family: "Poppins", sans-serif;
 }
 
-.volunteers-header h1 {
-  font-size: 2.5rem;
-  color: #0077b6;
-  margin-bottom: 10px;
+/* Floating Icons */
+.icon-floating {
+  position: absolute;
+  color: #90caf9;
+  opacity: 0.5;
+}
+.icon-left {
+  top: 80px;
+  left: 40px;
+}
+.icon-right {
+  bottom: 80px;
+  right: 40px;
 }
 
-.volunteers-header p {
-  color: #444;
-  font-size: 1.1rem;
-  max-width: 700px;
-  margin: 0 auto 40px auto;
+/* Title */
+.volunteers-title {
+  font-size: 3rem;
+  font-weight: 800;
+  text-align: center;
+  color: #1565c0;
+  margin-bottom: 60px;
+  text-shadow: 2px 2px 10px rgba(21, 101, 192, 0.2);
+}
+.volunteers-title span {
+  color: #1976d2;
 }
 
+/* Cards Layout */
 .volunteer-grid {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
   justify-content: center;
-  flex-wrap: wrap;
-  gap: 25px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
+/* Individual Cards */
 .volunteer-card {
-  background: white;
-  border-radius: 15px;
-  width: 250px;
-  padding: 20px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-  transition: 0.3s ease;
+  background: #ffffff;
+  border-radius: 20px;
+  text-align: center;
+  padding: 25px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  transition: 0.4s ease;
+  border-top: 6px solid #2196f3;
 }
-
 .volunteer-card:hover {
-  transform: translateY(-8px);
-  background: #d1f3ff;
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(33, 150, 243, 0.25);
+  background: #f0f8ff;
 }
-
 .volunteer-card img {
-  width: 100%;
-  height: 220px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
   object-fit: cover;
-  border-radius: 12px;
-  margin-bottom: 10px;
+  border: 4px solid #64b5f6;
+  margin-bottom: 15px;
+  box-shadow: 0 0 15px rgba(33, 150, 243, 0.3);
 }
-
 .volunteer-card h2 {
-  color: #0288d1;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
+  color: #1565c0;
   margin-bottom: 5px;
 }
-
 .volunteer-card h4 {
   color: #00796b;
-  margin-bottom: 10px;
   font-size: 1rem;
-}
-
-.volunteer-card p {
-  color: #333;
-  font-style: italic;
-}
-
-.join-section {
-  margin-top: 60px;
-  padding: 30px;
-  background: #e1f5fe;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-
-.join-section h2 {
-  color: #0077b6;
   margin-bottom: 10px;
 }
+.volunteer-card p {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.6;
+}
 
+/* Join Section */
+.join-section {
+  margin-top: 80px;
+  background: #e3f2fd;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(21, 101, 192, 0.2);
+  text-align: center;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.join-section h2 {
+  color: #0d47a1;
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
 .join-section p {
   color: #333;
-  margin-bottom: 20px;
-}
-
-.join-section button {
-  background-color: #0077b6;
-  color: white;
-  border: none;
-  padding: 12px 25px;
-  border-radius: 8px;
   font-size: 1rem;
-  cursor: pointer;
+  margin-bottom: 25px;
+}
+.join-button {
+  background: #1976d2;
+  color: #fff;
+  text-decoration: none;
+  padding: 12px 30px;
+  border-radius: 50px;
+  font-size: 1rem;
   transition: 0.3s;
+  box-shadow: 0 4px 10px rgba(25, 118, 210, 0.3);
+}
+.join-button:hover {
+  background: #0d47a1;
+  box-shadow: 0 6px 15px rgba(25, 118, 210, 0.4);
 }
 
-.join-section button:hover {
-  background-color: #004e89;
+/* Footer */
+.volunteer-footer {
+  text-align: center;
+  margin-top: 80px;
+  color: #666;
+  font-size: 0.9rem;
 }
