@@ -20,7 +20,7 @@ const Welcome = () => {
 
     const timer = setTimeout(() => {
       navigate("/home");
-    }, 6000);
+    }, 4000);
 
     return () => {
       clearInterval(bgTimer);
