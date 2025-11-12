@@ -5,14 +5,14 @@ function AboutUs() {
   return (
     <div className="about-container">
       <header className="about-header">
-        <h1>🌍 About Helping Universe NGO</h1>
+        <h1>🌍 NGO-CONNECT </h1>
         <p>Empowering lives through compassion, education, and hope.</p>
       </header>
 
       <section className="about-section">
         <h2>💖 Our Mission</h2>
         <p>
-          Helping Universe NGO is dedicated to uplifting underprivileged communities
+          NGO-CONNECT is dedicated to uplifting underprivileged communities
           by providing access to food, education, and healthcare. We believe small
           acts of kindness can bring about big change.
         </p>

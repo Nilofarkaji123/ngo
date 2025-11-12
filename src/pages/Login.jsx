@@ -48,7 +48,7 @@ const Login = () => {
     <div className="login-container">
       <div className="login-card">
         <h2>Welcome Back 👋</h2>
-        <p>Login to your Helping Universe NGO account</p>
+        <p>Login to NGO-CONNECT account</p>
         <form onSubmit={handleLogin}>
           <div className="input-group">
             <label>Email</label>

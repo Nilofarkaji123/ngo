@@ -14,7 +14,10 @@ const Welcome = () => {
   ];
 
   useEffect(() => {
+<<<<<<< HEAD
     // Background animation
+=======
+>>>>>>> 44a06b37971cf9074ed9c6b99ccf355e829cf019
     const bgTimer = setInterval(() => {
       setBgIndex((prev) => (prev + 1) % backgrounds.length);
     }, 3000);
@@ -22,7 +25,7 @@ const Welcome = () => {
     // Redirect to Home after 10 seconds
     const timer = setTimeout(() => {
       navigate("/home");
-    }, 10000);
+    }, 6000);
 
     return () => {
       clearInterval(bgTimer);
@@ -32,6 +35,7 @@ const Welcome = () => {
 
   return (
     <div className="welcome-container" style={{ background: backgrounds[bgIndex] }}>
+<<<<<<< HEAD
       {/* Particles */}
       <div className="particles">
         {[...Array(50)].map((_, i) => {
@@ -76,10 +80,21 @@ const Welcome = () => {
       </div>
 
       {/* Center Content */}
+=======
+      
+      {/* Floating Particles */}
+      <div className="particles">
+        {[...Array(40)].map((_, i) => (
+          <span key={i} className="particle" />
+        ))}
+      </div>
+
+      {/* Center text + logo */}
+>>>>>>> 44a06b37971cf9074ed9c6b99ccf355e829cf019
       <div className="welcome-content">
         <img src="/images/front.webp" alt="NGO Logo" className="welcome-logo" />
         <div className="welcome-texts">
-          <p className="welcome-top-text">Welcome</p>
+          <p className="welcome-top-text">Welcome To</p>
           <h1 className="welcome-text">NGO-CONNECT</h1>
         </div>
       </div>

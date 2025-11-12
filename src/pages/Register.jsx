@@ -60,7 +60,7 @@ const Register = () => {
   return (
     <div className="register-container">
       <div className="register-card">
-        <h2>Join Helping Universe 🌍</h2>
+        <h2>🌍 NGO-CONNECT 🌍</h2>
         <p>Become part of a change-making community</p>
 
         <form onSubmit={handleSubmit}>

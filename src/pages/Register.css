@@ -1,120 +1,105 @@
-/* Register.css */
-
+/* Container for the whole page */
 .register-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background: linear-gradient(
-      rgba(255, 255, 255, 0.4),
-      rgba(255, 255, 255, 0.4)
-    ),
-    url("https://images.unsplash.com/photo-1526256262350-7da7584cf5eb")
-      no-repeat center center/cover;
-  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+  background-color: #e0f7ff; /* very light blue background */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Card container */
 .register-card {
-  background: rgba(255, 255, 255, 0.96);
-  border-radius: 16px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-  padding: 40px;
-  width: 450px;
-  max-width: 90%;
+  background-color: #f0f8ff; /* light blue card */
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1); /* softer shadow */
+  color: #003366; /* dark blue text */
+  width: 100%;
+  max-width: 400px;
   text-align: center;
-  animation: slideIn 1s ease-in-out;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Slight hover effect on card */
+.register-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+/* Title and subtitle */
 .register-card h2 {
-  color: #0c3b2e;
-  font-weight: 700;
   margin-bottom: 10px;
+  font-size: 1.8rem;
+  color: #004080; /* darker blue for title */
 }
 
 .register-card p {
-  color: #444;
   margin-bottom: 25px;
-  font-size: 14px;
+  font-size: 1rem;
+  color: #0066cc; /* medium blue for subtitle */
 }
 
+/* Input groups */
 .input-group {
-  margin-bottom: 18px;
+  margin-bottom: 20px;
   text-align: left;
 }
 
 .input-group label {
   display: block;
-  font-weight: 600;
-  color: #222;
   margin-bottom: 5px;
+  font-weight: 500;
+  color: #004080; /* label in darker blue */
 }
 
 .input-group input {
   width: 100%;
-  padding: 12px;
-  border: 1px solid #bbb;
-  border-radius: 10px;
-  font-size: 15px;
-  transition: all 0.3s;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #99ccff; /* soft blue border */
+  outline: none;
+  font-size: 1rem;
+  transition: all 0.3s ease;
 }
 
 .input-group input:focus {
-  border-color: #0c3b2e;
-  outline: none;
-  box-shadow: 0 0 6px rgba(12, 59, 46, 0.4);
+  border-color: #3399ff; /* bright blue on focus */
+  box-shadow: 0 0 8px rgba(51,153,255,0.3);
 }
 
-/* 🟢 Register button */
+/* Button */
 .register-btn {
   width: 100%;
-  background: #0c3b2e;
-  color: #fff;
   padding: 12px;
   border: none;
-  border-radius: 10px;
+  border-radius: 8px;
+  background-color: #3399ff; /* medium blue */
+  color: white;
+  font-size: 1.1rem;
+  font-weight: bold;
   cursor: pointer;
-  font-weight: 600;
-  font-size: 16px;
-  transition: 0.3s;
+  transition: all 0.3s ease;
 }
 
 .register-btn:hover {
-  background: #14694d;
+  background-color: #0073e6; /* darker on hover */
 }
 
-/* 🔗 Login link */
+/* Login link */
 .login-link {
-  margin-top: 18px;
-  font-size: 14px;
-  color: #444;
+  margin-top: 15px;
+  font-size: 0.95rem;
+  color: #0066cc;
 }
 
 .login-link span {
-  color: #0c3b2e;
-  font-weight: 600;
   cursor: pointer;
-}
-
-.login-link span:hover {
+  color: #004080;
+  font-weight: 600;
   text-decoration: underline;
 }
 
-/* 🎞️ Animation */
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* 📱 Responsive */
-@media (max-width: 768px) {
-  .register-card {
-    width: 90%;
-    padding: 30px 20px;
-  }
+.login-link span:hover {
+  color: #3399ff;
 }

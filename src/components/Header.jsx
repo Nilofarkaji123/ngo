@@ -31,7 +31,7 @@ const Header = () => {
         <div className="auth-group">
           <NavLink id="login" to="/login">Login</NavLink>
           <NavLink id="register" to="/register">Register</NavLink>
-          <NavLink id="admin" to="/admin">Admin</NavLink>
+          <NavLink id="admin" to="/admin-login">Admin</NavLink>
         </div>
       </div>
     </header>

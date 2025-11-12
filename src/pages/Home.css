@@ -1,18 +1,18 @@
-/* Donations Section */
-
+/* Global fix */
 html, body {
   overflow-x: hidden;
 }
 
+/* Donations Section */
 .donations-section {
   padding: 5rem 2rem;
-  background: #f2f8ff;
+  background: #e6f0ff; /* soft blue background */
 }
 
 .donations-section h2 {
   text-align: center;
   font-size: 2.5rem;
-  color: #003B8E;
+  color: #003366; /* dark blue */
   margin-bottom: 3rem;
   position: relative;
 }
@@ -23,7 +23,7 @@ html, body {
   display: block;
   width: 80px;
   height: 4px;
-  background: #0077cc;
+  background: #3399ff; /* bright blue underline */
   margin: 10px auto 0;
   border-radius: 2px;
 }
@@ -32,27 +32,27 @@ html, body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
-   width: 100%;  
+  width: 100%;  
   margin: 0 auto;
 }
 
 .donation-card {
-  background: white;
+  background: #f2f8ff; /* very light blue */
   padding: 2rem 1.5rem;
   border-radius: 15px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 20px rgba(0, 51, 102, 0.1);
   text-align: center;
   transition: transform 0.4s, box-shadow 0.4s;
 }
 
 .donation-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 15px 30px rgba(0, 51, 102, 0.2);
 }
 
 .donation-card .icon {
   font-size: 3rem;
-  color: #0077cc;
+  color: #3399ff; /* blue icon */
   margin-bottom: 1rem;
   transition: transform 0.4s;
 }
@@ -63,7 +63,7 @@ html, body {
 
 .donation-card h3 {
   font-size: 1.5rem;
-  color: #003B8E;
+  color: #003366; /* dark blue */
   margin-bottom: 1rem;
 }
 
@@ -73,19 +73,43 @@ html, body {
   margin-bottom: 1.5rem;
 }
 
+/* Donate / Support Button */
 .donation-card button {
-  background: #0077cc;
+  background: #3399ff; /* blue button */
   color: white;
   border: none;
   padding: 0.7rem 1.5rem;
   border-radius: 25px;
   cursor: pointer;
   font-size: 0.95rem;
-  transition: 0.3s;
+  font-weight: normal; /* default normal */
+  transition: none; /* no hover effect */
 }
 
-.donation-card button:hover {
-  background: #005fa3;
+/* On click / active make bold */
+.donation-card button:active {
+  font-weight: bold;
+}
+
+/* Inspirational Quotes Section */
+.quotes-section {
+  text-align: center; /* center everything */
+  padding: 4rem 2rem;
+  background: #cce0ff; /* light blue background */
+  color: #003366; /* dark blue text */
+}
+
+.quotes-section h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #003366;
+}
+
+.quotes-section p {
+  font-size: 1.2rem;
+  margin: 1rem 0;
+  font-style: italic;
+  color: #0055aa;
 }
 
 /* AOS animation fixes for donation cards */

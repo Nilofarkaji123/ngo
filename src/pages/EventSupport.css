@@ -1,0 +1,42 @@
+.event-support-container {
+  max-width: 450px;
+  margin: 40px auto;
+  padding: 25px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.15);
+}
+
+.event-support-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.event-support-form input,
+.event-support-form select,
+.event-support-form textarea {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #999;
+  font-size: 14px;
+}
+
+.time-row {
+  display: flex;
+  gap: 10px;
+}
+
+.book-btn {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.book-btn:hover {
+  background: #005ec4;
+}

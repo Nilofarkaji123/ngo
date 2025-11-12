@@ -40,7 +40,7 @@ const DonateOptions = () => {
 
   return (
     <div className="donate-options-container">
-      <h1>💖 Choose a Donation Type</h1>
+      <h1>Choose a Donation Type</h1>
       <p>Every act of kindness matters. Select a way to help others.</p>
 
       <div className="donation-grid">

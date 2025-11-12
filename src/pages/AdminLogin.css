@@ -1,0 +1,83 @@
+/* AdminLogin.css */
+
+.admin-login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #e0f0ff; /* Light blue background */
+  font-family: 'Arial', sans-serif;
+}
+
+.admin-login-card {
+  background: #ffffff; /* White card */
+  padding: 40px 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  width: 350px;
+  text-align: center;
+}
+
+.admin-login-card h2 {
+  margin-bottom: 10px;
+  color: #0077cc; /* Blue title */
+}
+
+.admin-login-card p {
+  margin-bottom: 25px;
+  font-size: 14px;
+  color: #555555;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.input-group label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #0077cc;
+}
+
+.input-group input {
+  padding: 10px 12px;
+  border: 1px solid #cccccc;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+  border-color: #0077cc;
+  box-shadow: 0 0 5px rgba(0, 119, 204, 0.5);
+}
+
+.login-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #0077cc;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.login-btn:hover {
+  background-color: #005fa3;
+}
+
+.admin-login-card span {
+  color: #0077cc;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.admin-login-card span:hover {
+  color: #005fa3;
+}
