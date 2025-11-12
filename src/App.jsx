@@ -20,7 +20,8 @@ import AdminPanel from "./pages/AdminPanel";
 import ThankYouLetter from "./pages/ThankYouLetter";
 import MedicalSupport from "./pages/MedicalSupport"; // ✅ Added new page
 import EducationSupport from "./pages/EducationSupport";
-
+import TrackingPage from "./pages/TrackingPage";
+import GroceryDonation from "./components/GroceryDonation";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -58,6 +59,8 @@ function Layout() {
         <Route path="/money-donation" element={<MoneyDonation />} />
         <Route path="/medical-support" element={<MedicalSupport />} /> {/* ✅ New route */}
         <Route path="/education-support" element={<EducationSupport />} />
+        <Route path="/tracking" element={<TrackingPage />} />
+        <Route path="/grocery-donation" element={<GroceryDonation />} />
 
 
         {/* ✅ Other Functional Pages */}

@@ -1,42 +1,140 @@
-.event-support-container {
-  max-width: 450px;
-  margin: 40px auto;
-  padding: 25px;
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 0 12px rgba(0,0,0,0.15);
+.education-support-container {
+  text-align: center;
+  padding: 50px 25px;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+  min-height: 100vh;
+  color: #0d47a1;
 }
 
-.event-support-form {
+.education-support-container h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.education-support-container p {
+  max-width: 700px;
+  margin: 0 auto 40px auto;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+.education-grid {
   display: flex;
-  flex-direction: column;
-  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
 }
 
-.event-support-form input,
-.event-support-form select,
-.event-support-form textarea {
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #999;
-  font-size: 14px;
+.education-card {
+  background: white;
+  border-radius: 15px;
+  width: 250px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
-.time-row {
-  display: flex;
-  gap: 10px;
+.education-card:hover {
+  transform: translateY(-6px);
+  background: #dceefc;
 }
 
-.book-btn {
-  background: #007bff;
-  color: #fff;
+.education-card.active {
+  background: #bbdefb;
+  border: 2px solid #1976d2;
+}
+
+.education-card h2 {
+  color: #1565c0;
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+}
+
+.education-card p {
+  color: #444;
+  font-size: 0.95rem;
+  margin-bottom: 15px;
+}
+
+.education-card button {
+  background-color: #1976d2;
+  color: white;
   border: none;
-  padding: 12px;
+  padding: 8px 15px;
   border-radius: 8px;
   cursor: pointer;
   transition: 0.3s;
 }
 
-.book-btn:hover {
-  background: #005ec4;
+.education-card button:hover {
+  background-color: #0d47a1;
+}
+
+.education-form {
+  background: white;
+  margin: 40px auto;
+  max-width: 600px;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  text-align: left;
+}
+
+.education-form h2 {
+  text-align: center;
+  color: #0d47a1;
+  margin-bottom: 20px;
+}
+
+.education-form label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #0d47a1;
+}
+
+.education-form input,
+.education-form select,
+.education-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #90caf9;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+.education-form input:focus,
+.education-form select:focus,
+.education-form textarea:focus {
+  border-color: #1565c0;
+  box-shadow: 0 0 8px rgba(21, 101, 192, 0.3);
+  outline: none;
+}
+
+.education-form textarea {
+  resize: none;
+  height: 90px;
+}
+
+.donate-submit-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #1976d2;
+  color: white;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.donate-submit-btn:hover {
+  background-color: #0d47a1;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(13, 71, 161, 0.3);
 }

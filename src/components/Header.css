@@ -29,6 +29,7 @@
   font-size: 1.6rem;
   font-weight: 700;
   letter-spacing: 1px;
+  color: white; /* ✅ Added to make text white */
 }
 
 /* ---------- Navigation ---------- */
