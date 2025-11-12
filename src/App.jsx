@@ -1,4 +1,8 @@
+import React from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import "aos/dist/aos.css";
+
+// ✅ Pages
 import Welcome from "./pages/Welcome";
 import Home from "./pages/Home";
 import DonateOptions from "./pages/DonateOptions";
@@ -18,17 +22,12 @@ import Register from "./pages/Register";
 import AdminLogin from "./pages/AdminLogin";
 import AdminPanel from "./pages/AdminPanel";
 import ThankYouLetter from "./pages/ThankYouLetter";
-import MedicalSupport from "./pages/MedicalSupport"; // ✅ Added new page
+import MedicalSupport from "./pages/MedicalSupport";
 import EducationSupport from "./pages/EducationSupport";
 
-
+// ✅ Components
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-<<<<<<< HEAD
-import React from "react";
-=======
-import "aos/dist/aos.css";
->>>>>>> 44a06b37971cf9074ed9c6b99ccf355e829cf019
 
 function Layout() {
   const location = useLocation();
@@ -50,32 +49,18 @@ function Layout() {
         <Route path="/" element={<Welcome />} />
         <Route path="/home" element={<Home />} />
         <Route path="/activities" element={<Activities />} />
-<<<<<<< HEAD
-=======
         <Route path="/about" element={<AboutUs />} />
         <Route path="/volunteers" element={<Volunteers />} />
 
         {/* ✅ Donation Related Routes */}
->>>>>>> 44a06b37971cf9074ed9c6b99ccf355e829cf019
         <Route path="/donate-options" element={<DonateOptions />} />
         <Route path="/food-donation" element={<FoodDonation />} />
         <Route path="/books-donation" element={<BooksDonation />} />
         <Route path="/clothes-donation" element={<ClothesDonation />} />
         <Route path="/oldthings-donation" element={<OldThingsDonation />} />
         <Route path="/money-donation" element={<MoneyDonation />} />
-<<<<<<< HEAD
-        <Route path="/about" element={<AboutUs />} />
-        <Route path="/volunteers" element={<Volunteers />} />
-        <Route path="/birthday-booking" element={<BirthdayBooking />} />
-        <Route path="/occasion-booking" element={<OccasionBooking />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-
-        {/* 404 Fallback */}
-=======
-        <Route path="/medical-support" element={<MedicalSupport />} /> {/* ✅ New route */}
+        <Route path="/medical-support" element={<MedicalSupport />} />
         <Route path="/education-support" element={<EducationSupport />} />
-
 
         {/* ✅ Other Functional Pages */}
         <Route path="/event-support" element={<EventSupport />} />
@@ -90,9 +75,10 @@ function Layout() {
         <Route path="/admin-login" element={<AdminLogin />} />
         <Route path="/admin-panel" element={<AdminPanel />} />
 
-        {/* ✅ Others */}
+        {/* ✅ Thank You Page */}
         <Route path="/thank-you" element={<ThankYouLetter />} />
->>>>>>> 44a06b37971cf9074ed9c6b99ccf355e829cf019
+
+        {/* ✅ 404 Fallback */}
         <Route
           path="*"
           element={
