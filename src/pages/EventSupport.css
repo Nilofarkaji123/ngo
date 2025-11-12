@@ -1,140 +1,105 @@
-.education-support-container {
-  text-align: center;
-  padding: 50px 25px;
+/* 🌟 Page Background */
+body {
+  background: linear-gradient(120deg, #dbeeff, #e3f2fd);
   font-family: "Poppins", sans-serif;
-  background: linear-gradient(135deg, #e3f2fd, #bbdefb);
-  min-height: 100vh;
-  color: #0d47a1;
 }
 
-.education-support-container h1 {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-}
-
-.education-support-container p {
-  max-width: 700px;
-  margin: 0 auto 40px auto;
-  color: #333;
-  font-size: 1.1rem;
-}
-
-.education-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 25px;
-}
-
-.education-card {
-  background: white;
-  border-radius: 15px;
-  width: 250px;
-  padding: 20px;
-  text-align: center;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-.education-card:hover {
-  transform: translateY(-6px);
-  background: #dceefc;
-}
-
-.education-card.active {
-  background: #bbdefb;
-  border: 2px solid #1976d2;
-}
-
-.education-card h2 {
-  color: #1565c0;
-  font-size: 1.3rem;
-  margin-bottom: 8px;
-}
-
-.education-card p {
-  color: #444;
-  font-size: 0.95rem;
-  margin-bottom: 15px;
-}
-
-.education-card button {
-  background-color: #1976d2;
-  color: white;
-  border: none;
-  padding: 8px 15px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.education-card button:hover {
-  background-color: #0d47a1;
-}
-
-.education-form {
-  background: white;
-  margin: 40px auto;
+/* 🌟 Container Card */
+.event-support-container {
   max-width: 600px;
-  padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-  text-align: left;
-}
-
-.education-form h2 {
+  margin: 70px auto;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 75, 150, 0.15);
+  padding: 40px 35px;
+  transition: all 0.3s ease;
   text-align: center;
-  color: #0d47a1;
-  margin-bottom: 20px;
 }
 
-.education-form label {
-  display: block;
-  margin-bottom: 6px;
-  font-weight: 600;
-  color: #0d47a1;
+.event-support-container:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0, 90, 160, 0.2);
 }
 
-.education-form input,
-.education-form select,
-.education-form textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #90caf9;
-  border-radius: 10px;
-  margin-bottom: 15px;
+/* 🌟 Heading */
+.event-support-container h2 {
+  color: #023e8a;
+  font-size: 1.9rem;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.event-support-container p {
+  color: #0077b6;
   font-size: 1rem;
+  margin-bottom: 25px;
+}
+
+/* 🌟 Form */
+.event-support-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* 🌟 Label */
+.event-support-form label {
+  font-weight: 600;
+  color: #002855;
+  text-align: left;
+  margin-top: 5px;
+}
+
+/* 🌟 Inputs & Selects */
+.event-support-form input,
+.event-support-form select {
+  padding: 10px 14px;
+  border: 2px solid #90e0ef;
+  border-radius: 10px;
+  font-size: 1rem;
+  background-color: #f8fbff;
+  outline: none;
   transition: 0.3s;
 }
 
-.education-form input:focus,
-.education-form select:focus,
-.education-form textarea:focus {
-  border-color: #1565c0;
-  box-shadow: 0 0 8px rgba(21, 101, 192, 0.3);
-  outline: none;
+.event-support-form input:focus,
+.event-support-form select:focus {
+  border-color: #00b4d8;
+  box-shadow: 0 0 8px rgba(0, 180, 216, 0.4);
 }
 
-.education-form textarea {
-  resize: none;
-  height: 90px;
-}
-
-.donate-submit-btn {
-  width: 100%;
-  padding: 12px;
-  background-color: #1976d2;
+/* 🌟 Button */
+.book-btn {
+  background: linear-gradient(90deg, #0077b6, #00b4d8);
   color: white;
+  padding: 12px 20px;
   font-size: 1.1rem;
+  font-weight: 600;
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
   cursor: pointer;
+  margin-top: 15px;
   transition: all 0.3s ease;
 }
 
-.donate-submit-btn:hover {
-  background-color: #0d47a1;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(13, 71, 161, 0.3);
+.book-btn:hover {
+  background: linear-gradient(90deg, #00b4d8, #0077b6);
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 119, 182, 0.3);
+}
+
+/* 🌟 Responsive Design */
+@media (max-width: 600px) {
+  .event-support-container {
+    padding: 25px 20px;
+    margin: 40px 15px;
+  }
+
+  .event-support-container h2 {
+    font-size: 1.5rem;
+  }
+
+  .book-btn {
+    font-size: 1rem;
+  }
 }
