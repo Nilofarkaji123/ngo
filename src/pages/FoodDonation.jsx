@@ -4,118 +4,36 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import "./FoodDonation.css";
 
-<<<<<<< HEAD
-const FoodDonation = () => {
-  const [donationType, setDonationType] = useState("");
-  const [ngoName, setNgoName] = useState("");
-  const [items, setItems] = useState([{ foodName: "", quantity: "", bestBefore: "" }]);
-  const [submitted, setSubmitted] = useState(false);
+// Fix Leaflet default icon for React-Leaflet 4+
+delete L.Icon.Default.prototype._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl:
+    "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-icon-2x.png",
+  iconUrl:
+    "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-icon.png",
+  shadowUrl:
+    "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png",
+});
 
-  const handleTypeSelect = (type) => {
-    setDonationType(type);
-    setSubmitted(false);
-    setNgoName("");
-    setItems([{ foodName: "", quantity: "", bestBefore: "" }]);
-  };
-
-  const handleItemChange = (index, e) => {
-    const { name, value } = e.target;
-    setItems((prev) => {
-      const updated = [...prev];
-      updated[index][name] = value;
-      return updated;
-    });
-  };
-
-  const addItem = () => setItems([...items, { foodName: "", quantity: "", bestBefore: "" }]);
-  const removeItem = (index) => setItems(items.filter((_, i) => i !== index));
-
-  const validateForm = () => {
-    if (!ngoName.trim()) {
-      alert("Please enter the NGO Name.");
-      return false;
-    }
-    const today = new Date();
-    for (const [i, item] of items.entries()) {
-      const { foodName, quantity, bestBefore } = item;
-      if (!foodName.trim() || !quantity || !bestBefore) {
-        alert(`All fields are required for item ${i + 1}.`);
-        return false;
-      }
-      const qty = Number(quantity);
-      if (isNaN(qty) || qty <= 0) {
-        alert(`Quantity must be a positive number for item ${i + 1}.`);
-        return false;
-      }
-      const bestBeforeDate = new Date(bestBefore);
-      if (bestBeforeDate < today.setHours(0, 0, 0, 0)) {
-        alert(`Best Before date must be today or later for item ${i + 1}.`);
-        return false;
-      }
-    }
-    return true;
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!validateForm()) return;
-
-    try {
-      const res = await fetch("http://localhost:8082/ngo/api/food-donation", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ngoName, donationType, items }),
-      });
-
-      if (!res.ok) throw new Error("Network response was not ok");
-      const data = await res.json();
-      alert(data.message);
-      if (data.message.toLowerCase().includes("success")) {
-        setSubmitted(true);
-      }
-    } catch (err) {
-      console.error("Error:", err);
-      alert("Something went wrong while registering. Please try again.");
-    }
-  };
-
-  return (
-    <div className="food-donation-container">
-      <h2 className="title">🍱 Food Donation</h2>
-      <div className="donation-type-buttons">
-        <button onClick={() => handleTypeSelect("Ready-made Packed")}>
-          Ready-made Packed
-        </button>
-        <button onClick={() => handleTypeSelect("Uncooked (Grains, Pulses, Oil)")}>
-          Uncooked
-        </button>
-        <button onClick={() => handleTypeSelect("Remaining Food (Hotels/Functions)")}>
-          Remaining Food
-        </button>
-      </div>
-
-      {donationType && !submitted && (
-        <form className="food-donation-form" onSubmit={handleSubmit}>
-          <label>
-            NGO Name:
-=======
-// NGO sample data
-const ngos = [
-  { id: 1, name: "Helping Hands NGO", lat: 19.081, lng: 72.882 },
-  { id: 2, name: "Feed the Hungry", lat: 19.078, lng: 72.88 },
-  { id: 3, name: "Care & Share", lat: 19.079, lng: 72.879 },
-];
-
-// Leaflet icon for NGOs
+// Custom blue icon (optional)
 const ngoIcon = new L.Icon({
   iconUrl: "https://maps.google.com/mapfiles/ms/icons/blue-dot.png",
   iconSize: [25, 41],
   iconAnchor: [12, 41],
+  shadowUrl:
+    "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png",
 });
 
 const FoodDonation = () => {
   const [selectedType, setSelectedType] = useState("");
-  const [donationDetails, setDonationDetails] = useState({ name: "", quantity: "", quality: "", ngoId: null });
+  const [donationDetails, setDonationDetails] = useState({
+    foodName: "",
+    quantity: "",
+    bestBefore: "",
+    ngoId: null,
+  });
+  const [city, setCity] = useState("");
+  const [ngos, setNgos] = useState([]);
   const [trackingItems, setTrackingItems] = useState([]);
   const [trackingType, setTrackingType] = useState("");
 
@@ -125,40 +43,99 @@ const FoodDonation = () => {
     { name: "🥡 Leftover Food", type: "Leftover" },
   ];
 
+  // Fetch NGOs by city
+  const fetchNgos = async () => {
+    if (!city.trim()) {
+      alert("Please enter a city name.");
+      return;
+    }
+
+    try {
+      const res = await fetch(`http://localhost:8082/ngo/get-ngos?city=${city}`);
+      const data = await res.json();
+
+      if (data.status === "success" && data.ngos.length > 0) {
+        setNgos(data.ngos);
+      } else {
+        alert("No NGOs found in this city.");
+        setNgos([]);
+      }
+    } catch (err) {
+      console.error("Error fetching NGOs:", err);
+      alert("Failed to fetch NGOs. Check your backend connection.");
+    }
+  };
+
   const handleDonateClick = (type) => {
     setSelectedType(type);
-    setDonationDetails({ name: "", quantity: "", quality: "", ngoId: null });
+    setDonationDetails({ foodName: "", quantity: "", bestBefore: "", ngoId: null });
   };
 
   const handleInputChange = (e) => {
     setDonationDetails({ ...donationDetails, [e.target.name]: e.target.value });
   };
 
-  const handleSelectNGO = (id) => {
-    setDonationDetails({ ...donationDetails, ngoId: id });
+  const handleSelectNGO = (e) => {
+    setDonationDetails({ ...donationDetails, ngoId: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const selectedNgoCoords = () => {
+    const ngo = ngos.find((n) => n.id === parseInt(donationDetails.ngoId));
+    return ngo ? [ngo.lat || 19.076, ngo.lng || 72.877] : null;
+  };
+
+  // Submit donation
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!donationDetails.name || !donationDetails.quantity || !donationDetails.quality || !donationDetails.ngoId) {
+
+    if (
+      !donationDetails.foodName ||
+      !donationDetails.quantity ||
+      !donationDetails.bestBefore ||
+      !donationDetails.ngoId
+    ) {
       alert("Please fill all details and select an NGO!");
       return;
     }
 
     const ngo = ngos.find((n) => n.id === parseInt(donationDetails.ngoId));
     const item = {
-      foodName: donationDetails.name,
+      foodName: donationDetails.foodName,
       quantity: donationDetails.quantity,
       ngoName: ngo.name,
-      lat: 19.076 + Math.random() * 0.02,
-      lng: 72.8777 + Math.random() * 0.02,
-      targetLat: ngo.lat,
-      targetLng: ngo.lng,
+      targetLat: ngo.lat || 19.076,
+      targetLng: ngo.lng || 72.877,
     };
 
-    setTrackingType(selectedType);
-    setTrackingItems([item]); // for demo, one item at a time
-    setSelectedType(""); // hide form
+    try {
+      const response = await fetch("http://localhost:8082/ngo/foodDonation", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({
+          donorName: "Anonymous",
+          ngoName: ngo.name,
+          donationType: selectedType,
+          foodName: donationDetails.foodName,
+          quantity: donationDetails.quantity,
+          bestBefore: donationDetails.bestBefore,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.status === "success") {
+        alert("Donation recorded successfully!");
+        setTrackingType(selectedType);
+        setTrackingItems([item]);
+        setSelectedType("");
+        setDonationDetails({ foodName: "", quantity: "", bestBefore: "", ngoId: null });
+      } else {
+        alert(result.message || "Failed to record donation.");
+      }
+    } catch (err) {
+      console.error("Error:", err);
+      alert("Failed to connect to backend.");
+    }
   };
 
   return (
@@ -166,6 +143,42 @@ const FoodDonation = () => {
       <h1>🍲 Food Donation</h1>
       <p>Share the joy of food and help feed the hungry.</p>
 
+      {/* City Search Section */}
+      <div className="city-search-container">
+        <h3>Find NGOs in your city</h3>
+        <div className="city-search-box">
+          <input
+            type="text"
+            placeholder="Enter your city (e.g. Nashik, Sinnar, Pune)"
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
+          />
+          <button className="search-btn" onClick={fetchNgos}>
+            🔍 Search NGOs
+          </button>
+        </div>
+      </div>
+
+      {/* Attractive NGO Dropdown */}
+      {ngos.length > 0 && (
+        <div className="ngo-dropdown-container">
+          <label>Select NGO in {city}:</label>
+          <select
+            value={donationDetails.ngoId || ""}
+            onChange={handleSelectNGO}
+            className="styled-dropdown"
+          >
+            <option value="">-- Select an NGO --</option>
+            {ngos.map((ngo) => (
+              <option key={ngo.id} value={ngo.id}>
+                {ngo.name}
+              </option>
+            ))}
+          </select>
+        </div>
+      )}
+
+      {/* Food Type Options */}
       <div className="food-grid">
         {foodOptions.map((option, index) => (
           <div key={index} className="food-card">
@@ -183,113 +196,58 @@ const FoodDonation = () => {
         <div className="donation-form">
           <h2>Donate {selectedType} Food</h2>
           <form onSubmit={handleSubmit}>
->>>>>>> 44a06b37971cf9074ed9c6b99ccf355e829cf019
+            <label>Food Name / Description</label>
             <input
               type="text"
-              name="name"
-              placeholder="Food Name / Description"
-              value={donationDetails.name}
+              name="foodName"
+              placeholder="Enter food name (e.g. Rice, Roti)"
+              value={donationDetails.foodName}
               onChange={handleInputChange}
             />
+
+            <label>Quantity (kg)</label>
             <input
               type="number"
               name="quantity"
-              placeholder="Quantity (kg)"
+              placeholder="Enter quantity in kg"
               value={donationDetails.quantity}
               onChange={handleInputChange}
             />
+
+            <label>Best Before Date</label>
             <input
-              type="text"
-              name="quality"
-              placeholder="Quality / Condition"
-              value={donationDetails.quality}
+              type="date"
+              name="bestBefore"
+              value={donationDetails.bestBefore}
               onChange={handleInputChange}
             />
-<<<<<<< HEAD
-          </label>
 
-          {items.map((item, index) => (
-            <div key={index} className="food-item">
-              <label>
-                Food Name:
-                <input
-                  type="text"
-                  name="foodName"
-                  value={item.foodName}
-                  onChange={(e) => handleItemChange(index, e)}
-                  required
+            {/* Map Display */}
+            {donationDetails.ngoId && selectedNgoCoords() && (
+              <MapContainer
+                key={`${donationDetails.ngoId}-${Date.now()}`} // unique key per render
+                center={selectedNgoCoords()}
+                zoom={13}
+                style={{ height: "300px", width: "100%" }}
+              >
+                <TileLayer
+                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                  attribution="&copy; OpenStreetMap contributors"
                 />
-              </label>
-              <label>
-                Quantity (kg):
-                <input
-                  type="number"
-                  name="quantity"
-                  value={item.quantity}
-                  onChange={(e) => handleItemChange(index, e)}
-                  required
-                />
-              </label>
-              <label>
-                Best Before:
-                <input
-                  type="date"
-                  name="bestBefore"
-                  value={item.bestBefore}
-                  onChange={(e) => handleItemChange(index, e)}
-                  required
-                />
-              </label>
-              {items.length > 1 && (
-                <button type="button" onClick={() => removeItem(index)}>
-                  Remove
-                </button>
-              )}
-            </div>
-          ))}
-
-          <button type="button" onClick={addItem}>
-            + Add Another Item
-          </button>
-          <button type="submit">Submit Donation</button>
-        </form>
-      )}
-
-      {submitted && (
-        <div className="thank-you">
-          <h3>✅ Donation Submitted Successfully!</h3>
-          <p>Thank you for your generous food donation.</p>
-        </div>
-      )}
-=======
-
-            <h3>Select Nearby NGO</h3>
-            <MapContainer center={[19.076, 72.8777]} zoom={13} style={{ height: "300px", width: "100%" }}>
-              <TileLayer
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                attribution='&copy; OpenStreetMap contributors'
-              />
-              {ngos.map((ngo) => (
-                <Marker
-                  key={ngo.id}
-                  position={[ngo.lat, ngo.lng]}
-                  icon={ngoIcon}
-                  eventHandlers={{
-                    click: () => handleSelectNGO(ngo.id),
-                  }}
-                >
-                  <Popup>{ngo.name} (Click marker to select)</Popup>
+                <Marker position={selectedNgoCoords()} icon={ngoIcon}>
+                  <Popup>{ngos.find((n) => n.id === parseInt(donationDetails.ngoId))?.name}</Popup>
                 </Marker>
-              ))}
-            </MapContainer>
-            <p>Selected NGO: {donationDetails.ngoId ? ngos.find(n => n.id === parseInt(donationDetails.ngoId)).name : "None"}</p>
+              </MapContainer>
+            )}
 
-            <button type="submit" className="donate-btn">Submit Donation</button>
+            <button type="submit" className="donate-btn">
+              Submit Donation
+            </button>
           </form>
         </div>
       )}
 
-      {/* Tracking Map */}
+      {/* Tracking Section */}
       {trackingItems.length > 0 && (
         <>
           <h2 style={{ marginTop: "40px", color: "#014f86" }}>
@@ -298,7 +256,6 @@ const FoodDonation = () => {
           <FoodTracking type={trackingType} items={trackingItems} />
         </>
       )}
->>>>>>> 44a06b37971cf9074ed9c6b99ccf355e829cf019
     </div>
   );
 };

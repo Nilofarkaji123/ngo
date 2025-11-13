@@ -24,6 +24,7 @@ import AdminPanel from "./pages/AdminPanel";
 import ThankYouLetter from "./pages/ThankYouLetter";
 import MedicalSupport from "./pages/MedicalSupport";
 import EducationSupport from "./pages/EducationSupport";
+import "leaflet/dist/leaflet.css";
 
 // ✅ Components
 import Header from "./components/Header";

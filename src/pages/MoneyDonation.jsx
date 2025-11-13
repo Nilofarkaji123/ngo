@@ -19,7 +19,7 @@ const MoneyDonation = () => {
     });
   };
 
-  // Generate PDF receipt after successful payment
+  // Generate PDF receipt
   const generatePDF = () => {
     const doc = new jsPDF();
     doc.setFont("helvetica", "bold");
@@ -38,7 +38,6 @@ const MoneyDonation = () => {
     doc.save(`Donation_Receipt_${name}.pdf`);
   };
 
-  // Handle donation payment
   const handlePayment = async (e) => {
     e.preventDefault();
 
@@ -47,27 +46,27 @@ const MoneyDonation = () => {
       return;
     }
 
-    // Load Razorpay checkout script
     const res = await loadRazorpayScript(
       "https://checkout.razorpay.com/v1/checkout.js"
     );
+
     if (!res) {
       alert("Razorpay SDK failed to load. Are you online?");
       return;
     }
 
     try {
-      // ✅ Create order on backend (POST JSON)
+      // ✅ Create order on backend
       const orderResponse = await axios.post(
-        "https://georgene-croakier-tasha.ngrok-free.dev/ngo/create-order",
-        { amount: parseInt(amount) }, // Ensure number
+        "http://localhost:8082/ngo/create-order",
+        { amount: parseInt(amount) },
         { headers: { "Content-Type": "application/json" } }
       );
 
       const { id: order_id, amount: orderAmount, currency } = orderResponse.data;
 
       const options = {
-        key: "rzp_test_ReQ9r02OUUmcZl", // Public Razorpay key
+        key: "rzp_test_ReQ9r02OUUmcZl", // Replace with your Razorpay key
         amount: orderAmount,
         currency,
         name: "Helping Universe NGO",
@@ -78,9 +77,9 @@ const MoneyDonation = () => {
 
         handler: async function (response) {
           try {
-            // ✅ Verify payment on backend
+            // ✅ Verify payment
             const verifyResponse = await axios.post(
-              "https://georgene-croakier-tasha.ngrok-free.dev/ngo/verify-payment",
+              "http://localhost:8082/ngo/verify-payment",
               new URLSearchParams({
                 orderCreationId: order_id,
                 razorpayPaymentId: response.razorpay_payment_id,
@@ -113,7 +112,7 @@ const MoneyDonation = () => {
     } catch (error) {
       console.error("Server error:", error);
       alert(
-        "❌ Server error occurred while creating order. Make sure backend is running."
+        "❌ Server error occurred while creating order. Make sure backend is running at http://localhost:8082"
       );
     }
   };

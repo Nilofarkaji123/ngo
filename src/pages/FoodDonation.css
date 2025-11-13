@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 /* Main Container */
-=======
->>>>>>> 44a06b37971cf9074ed9c6b99ccf355e829cf019
 .food-donation-container {
   text-align: center;
   padding: 50px 20px;
@@ -10,99 +7,9 @@
   animation: fadeIn 1s ease-in-out;
 }
 
-<<<<<<< HEAD
-/* Donation Type Buttons */
-.donation-type-buttons {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  margin-bottom: 35px;
-}
-
-.donation-type-buttons button {
-  padding: 18px;
-  font-size: 1.1rem;
-  border-radius: 12px;
-  border: none;
-  cursor: pointer;
-  font-weight: 600;
-  color: white;
-  letter-spacing: 0.5px;
-  transition: all 0.3s ease;
-}
-
-.donation-type-buttons button:nth-child(1) {
-  background: linear-gradient(135deg, #00b09b, #96c93d);
-}
-.donation-type-buttons button:nth-child(2) {
-  background: linear-gradient(135deg, #007adf, #00ecbc);
-}
-.donation-type-buttons button:nth-child(3) {
-  background: linear-gradient(135deg, #ff416c, #ff4b2b);
-}
-
-.donation-type-buttons button:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
-}
-
-/* Form Container */
-.food-donation-form {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(15px);
-  padding: 30px;
-  border-radius: 15px;
-  display: flex;
-  flex-direction: column;
-  gap: 22px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-/* Labels & Inputs */
-.food-donation-form label {
-  display: flex;
-  flex-direction: column;
-  font-size: 1rem;
-  font-weight: 500;
-  color: #e0e8ef;
-}
-
-.food-donation-form input {
-  padding: 12px 14px;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-  margin-top: 8px;
-  font-size: 1rem;
-  outline: none;
-  transition: border 0.3s ease, box-shadow 0.3s ease;
-}
-
-.food-donation-form input:focus {
-  border-color: #00c6ff;
-  box-shadow: 0 0 8px rgba(0, 198, 255, 0.5);
-}
-
-/* Food Item Block */
-.food-item {
-  border: 1px dashed rgba(255, 255, 255, 0.3);
-  padding: 18px;
-  border-radius: 12px;
-  position: relative;
-  background: rgba(255, 255, 255, 0.05);
-  transition: all 0.3s ease;
-}
-
-.food-item:hover {
-  background: rgba(255, 255, 255, 0.1);
-  transform: scale(1.02);
-}
-
-.food-item h4 {
-=======
 .food-donation-container h1 {
   font-size: 2.8rem;
   color: #01579b;
->>>>>>> 44a06b37971cf9074ed9c6b99ccf355e829cf019
   margin-bottom: 10px;
   font-weight: 700;
 }
@@ -121,60 +28,12 @@
   padding: 0 20px;
 }
 
-<<<<<<< HEAD
-/* Submit Button */
-.food-donation-form button[type="submit"] {
-  background: linear-gradient(135deg, #11998e, #38ef7d);
-  padding: 16px;
-  font-size: 1.2rem;
-  color: white;
-  font-weight: bold;
-  border-radius: 12px;
-  border: none;
-  cursor: pointer;
-  transition: 0.3s ease;
-}
-
-.food-donation-form button[type="submit"]:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-}
-
-/* Tracking Section */
-.tracking-section {
-  margin-top: 45px;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  padding: 25px;
-  border-radius: 15px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #e8f0f8;
-}
-
-/* Responsive */
-@media (max-width: 600px) {
-  .food-donation-container {
-    padding: 25px 20px;
-  }
-=======
-@media (max-width: 1024px) {
-  .food-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 680px) {
-  .food-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
 /* Food Card Styling */
 .food-card {
   background: white;
   padding: 25px 20px;
   border-radius: 18px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   cursor: pointer;
   transition: transform 0.4s ease, box-shadow 0.4s ease;
   animation: slideUp 0.8s ease-out;
@@ -182,7 +41,7 @@
 
 .food-card:hover {
   transform: translateY(-8px) scale(1.03);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.22);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
 }
 
 .food-card h2 {
@@ -214,12 +73,13 @@
   transform: scale(1.05);
 }
 
+/* Donation Form */
 .donation-form {
   background: #e1f5fe;
   padding: 20px;
   border-radius: 15px;
   margin-top: 30px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .donation-form form {
@@ -256,6 +116,19 @@
   transform: scale(1.05);
 }
 
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .food-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 680px) {
+  .food-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Animations */
 @keyframes fadeIn {
   0% { opacity: 0; transform: scale(0.96); }
@@ -265,5 +138,88 @@
 @keyframes slideUp {
   0% { opacity: 0; transform: translateY(40px); }
   100% { opacity: 1; transform: translateY(0); }
->>>>>>> 44a06b37971cf9074ed9c6b99ccf355e829cf019
+}
+/* ===========================
+   City Search Section
+   =========================== */
+.city-search-container {
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.city-search-container h3 {
+  margin-bottom: 10px;
+  color: #014f86;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+/* Search Input & Button */
+.city-search-box {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.city-search-box input {
+  padding: 10px 15px;
+  width: 250px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.city-search-box input:focus {
+  outline: none;
+  border-color: #014f86;
+  box-shadow: 0 0 5px rgba(1, 79, 134, 0.3);
+}
+
+.city-search-box .search-btn {
+  background-color: #014f86;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.city-search-box .search-btn:hover {
+  background-color: #0171b3;
+}
+
+/* ===========================
+   NGO Dropdown Section
+   =========================== */
+.ngo-dropdown-container {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.ngo-dropdown-container label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #014f86;
+}
+
+.styled-dropdown {
+  padding: 10px 15px;
+  width: 80%;
+  max-width: 400px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.styled-dropdown:hover,
+.styled-dropdown:focus {
+  border-color: #014f86;
+  outline: none;
+  box-shadow: 0 0 5px rgba(1, 79, 134, 0.3);
 }

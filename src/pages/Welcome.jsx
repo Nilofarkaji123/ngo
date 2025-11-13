@@ -14,15 +14,12 @@ const Welcome = () => {
   ];
 
   useEffect(() => {
-<<<<<<< HEAD
-    // Background animation
-=======
->>>>>>> 44a06b37971cf9074ed9c6b99ccf355e829cf019
+    // Animate background
     const bgTimer = setInterval(() => {
       setBgIndex((prev) => (prev + 1) % backgrounds.length);
     }, 3000);
 
-    // Redirect to Home after 10 seconds
+    // Redirect to Home after 6 seconds
     const timer = setTimeout(() => {
       navigate("/home");
     }, 6000);
@@ -35,8 +32,7 @@ const Welcome = () => {
 
   return (
     <div className="welcome-container" style={{ background: backgrounds[bgIndex] }}>
-<<<<<<< HEAD
-      {/* Particles */}
+      {/* Floating Particles */}
       <div className="particles">
         {[...Array(50)].map((_, i) => {
           const size = Math.random() * 8 + 4;
@@ -63,7 +59,7 @@ const Welcome = () => {
         })}
       </div>
 
-      {/* Trees background */}
+      {/* Decorative Trees */}
       <div className="trees">
         <div className="tree tree1"></div>
         <div className="tree tree2"></div>
@@ -72,7 +68,7 @@ const Welcome = () => {
         <div className="tree tree5"></div>
       </div>
 
-      {/* Waves behind logo */}
+      {/* Animated Waves */}
       <div className="waves">
         <div className="wave wave1"></div>
         <div className="wave wave2"></div>
@@ -80,17 +76,6 @@ const Welcome = () => {
       </div>
 
       {/* Center Content */}
-=======
-      
-      {/* Floating Particles */}
-      <div className="particles">
-        {[...Array(40)].map((_, i) => (
-          <span key={i} className="particle" />
-        ))}
-      </div>
-
-      {/* Center text + logo */}
->>>>>>> 44a06b37971cf9074ed9c6b99ccf355e829cf019
       <div className="welcome-content">
         <img src="/images/front.webp" alt="NGO Logo" className="welcome-logo" />
         <div className="welcome-texts">
