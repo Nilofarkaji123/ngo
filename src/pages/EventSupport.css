@@ -1,42 +1,105 @@
-.event-support-container {
-  max-width: 450px;
-  margin: 40px auto;
-  padding: 25px;
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 0 12px rgba(0,0,0,0.15);
+/* 🌟 Page Background */
+body {
+  background: linear-gradient(120deg, #dbeeff, #e3f2fd);
+  font-family: "Poppins", sans-serif;
 }
 
+/* 🌟 Container Card */
+.event-support-container {
+  max-width: 600px;
+  margin: 70px auto;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 75, 150, 0.15);
+  padding: 40px 35px;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.event-support-container:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0, 90, 160, 0.2);
+}
+
+/* 🌟 Heading */
+.event-support-container h2 {
+  color: #023e8a;
+  font-size: 1.9rem;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.event-support-container p {
+  color: #0077b6;
+  font-size: 1rem;
+  margin-bottom: 25px;
+}
+
+/* 🌟 Form */
 .event-support-form {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
+/* 🌟 Label */
+.event-support-form label {
+  font-weight: 600;
+  color: #002855;
+  text-align: left;
+  margin-top: 5px;
+}
+
+/* 🌟 Inputs & Selects */
 .event-support-form input,
-.event-support-form select,
-.event-support-form textarea {
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #999;
-  font-size: 14px;
-}
-
-.time-row {
-  display: flex;
-  gap: 10px;
-}
-
-.book-btn {
-  background: #007bff;
-  color: #fff;
-  border: none;
-  padding: 12px;
-  border-radius: 8px;
-  cursor: pointer;
+.event-support-form select {
+  padding: 10px 14px;
+  border: 2px solid #90e0ef;
+  border-radius: 10px;
+  font-size: 1rem;
+  background-color: #f8fbff;
+  outline: none;
   transition: 0.3s;
 }
 
+.event-support-form input:focus,
+.event-support-form select:focus {
+  border-color: #00b4d8;
+  box-shadow: 0 0 8px rgba(0, 180, 216, 0.4);
+}
+
+/* 🌟 Button */
+.book-btn {
+  background: linear-gradient(90deg, #0077b6, #00b4d8);
+  color: white;
+  padding: 12px 20px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: all 0.3s ease;
+}
+
 .book-btn:hover {
-  background: #005ec4;
+  background: linear-gradient(90deg, #00b4d8, #0077b6);
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 119, 182, 0.3);
+}
+
+/* 🌟 Responsive Design */
+@media (max-width: 600px) {
+  .event-support-container {
+    padding: 25px 20px;
+    margin: 40px 15px;
+  }
+
+  .event-support-container h2 {
+    font-size: 1.5rem;
+  }
+
+  .book-btn {
+    font-size: 1rem;
+  }
 }

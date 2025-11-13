@@ -1,19 +1,48 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import "./EducationSupport.css";
 
 const EducationSupport = () => {
   const [selectedType, setSelectedType] = useState("");
-  const [amount, setAmount] = useState("");
+  const [quantity, setQuantity] = useState("");
   const [description, setDescription] = useState("");
   const [selectedNGO, setSelectedNGO] = useState("");
+  const [donorName, setDonorName] = useState("");
+  const [contact, setContact] = useState("");
+  const [email, setEmail] = useState("");
 
+  useEffect(() => {
+    AOS.init({ duration: 800, once: true });
+  }, []);
+
+  // 🎒 Donation options (items, not money)
   const donationOptions = [
-    { name: "🎓 School Fees", type: "fees", info: "Help a child continue their education by contributing to their school fees." },
-    { name: "✏️ Stationery", type: "stationery", info: "Donate notebooks, pens, and other essentials for students." },
-    { name: "🏅 Scholarships", type: "scholarship", info: "Support talented students with merit-based scholarships." },
-    { name: "💻 Online Learning", type: "online", info: "Contribute to devices or subscriptions for online education." },
+    { 
+      name: "📚 Books & Notebooks", 
+      type: "books", 
+      info: "Donate storybooks, textbooks, or notebooks to enhance learning." 
+    },
+    { 
+      name: "🎒 School Uniforms", 
+      type: "uniform", 
+      info: "Provide neat school uniforms for children in need." 
+    },
+    { 
+      name: "✏️ Stationery Kits", 
+      type: "stationery", 
+      info: "Include pens, pencils, erasers, rulers, and other supplies." 
+    },
+    { 
+      name: "💻 Learning Gadgets", 
+      type: "gadgets", 
+      info: "Help children access online education with tablets or used laptops." 
+    },
+    { 
+      name: "🪑 Classroom Furniture", 
+      type: "furniture", 
+      info: "Support by donating desks, chairs, or whiteboards for better learning spaces." 
+    },
   ];
 
   const ngoList = [
@@ -23,30 +52,50 @@ const EducationSupport = () => {
     "Sanjivani Children Foundation",
   ];
 
+  const validateForm = () => {
+    const phoneRegex = /^[0-9]{10}$/;
+    const emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+
+    if (!donorName.trim()) return "Please enter your name.";
+    if (!phoneRegex.test(contact)) return "Enter a valid 10-digit contact number.";
+    if (!emailRegex.test(email)) return "Enter a valid email address.";
+    if (!selectedType) return "Select an item to donate.";
+    if (!quantity || quantity <= 0) return "Enter a valid quantity.";
+    if (!selectedNGO) return "Select an NGO or beneficiary.";
+    return null;
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    if (!selectedType || !amount || !selectedNGO) {
-      alert("⚠️ Please fill in all required fields.");
+    const error = validateForm();
+    if (error) {
+      alert("⚠️ " + error);
       return;
     }
 
-    if (isNaN(amount) || Number(amount) <= 0) {
-      alert("💰 Please enter a valid donation amount.");
-      return;
-    }
+    alert(
+      `🎉 Thank you ${donorName}! 
+Your donation of ${quantity} ${selectedType}(s) has been pledged successfully to ${selectedNGO}. 
+They will contact you soon for collection or drop-off details.`
+    );
 
-    alert(`🎉 Thank you for supporting education through ${selectedNGO}!`);
+    // Reset form
     setSelectedType("");
-    setAmount("");
+    setQuantity("");
     setDescription("");
     setSelectedNGO("");
+    setDonorName("");
+    setContact("");
+    setEmail("");
   };
 
   return (
     <div className="education-support-container" data-aos="fade-up">
-      <h1>🎒 Education Support</h1>
-      <p>Donate for school fees, stationery, scholarships, or online learning programs to empower education for every child.</p>
+      <h1>🎒 Education Support Drive</h1>
+      <p>
+        Be a reason for a child’s smile. Contribute learning items like books,
+        uniforms, or gadgets — and empower their future!
+      </p>
 
       <div className="education-grid">
         {donationOptions.map((option, index) => (
@@ -54,11 +103,12 @@ const EducationSupport = () => {
             key={index}
             className={`education-card ${selectedType === option.type ? "active" : ""}`}
             data-aos="zoom-in"
-            data-aos-delay={index * 150}
+            data-aos-delay={index * 120}
+            onClick={() => setSelectedType(option.type)}
           >
             <h2>{option.name}</h2>
             <p>{option.info}</p>
-            <button onClick={() => setSelectedType(option.type)}>
+            <button type="button">
               {selectedType === option.type ? "Selected ✓" : "Select"}
             </button>
           </div>
@@ -66,18 +116,51 @@ const EducationSupport = () => {
       </div>
 
       {selectedType && (
-        <form className="education-form" onSubmit={handleSubmit} data-aos="fade-up" data-aos-delay="300">
-          <h2>📋 Donation Details</h2>
+        <form
+          className="education-form"
+          onSubmit={handleSubmit}
+          data-aos="fade-up"
+          data-aos-delay="300"
+        >
+          <h2>📦 Donation Details</h2>
 
-          <label>Donation Type:</label>
+          <label>Your Full Name:</label>
+          <input
+            type="text"
+            value={donorName}
+            onChange={(e) => setDonorName(e.target.value)}
+            placeholder="Enter your full name"
+            required
+          />
+
+          <label>Email Address:</label>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Enter your email"
+            required
+          />
+
+          <label>Contact Number:</label>
+          <input
+            type="tel"
+            value={contact}
+            onChange={(e) => setContact(e.target.value)}
+            placeholder="Enter 10-digit number"
+            maxLength="10"
+            required
+          />
+
+          <label>Selected Item:</label>
           <input type="text" value={selectedType} disabled />
 
-          <label>Amount (₹):</label>
+          <label>Quantity:</label>
           <input
             type="number"
-            value={amount}
-            onChange={(e) => setAmount(e.target.value)}
-            placeholder="Enter amount (₹)"
+            value={quantity}
+            onChange={(e) => setQuantity(e.target.value)}
+            placeholder="Enter number of items"
             required
           />
 
@@ -89,19 +172,21 @@ const EducationSupport = () => {
           >
             <option value="">-- Select NGO --</option>
             {ngoList.map((ngo, idx) => (
-              <option key={idx} value={ngo}>{ngo}</option>
+              <option key={idx} value={ngo}>
+                {ngo}
+              </option>
             ))}
           </select>
 
           <label>Message (Optional):</label>
           <textarea
-            placeholder="Write a note or message for your donation..."
+            placeholder="Write a short message or note..."
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
 
           <button type="submit" className="donate-submit-btn">
-            💖 Confirm Donation
+            🤝 Confirm Donation
           </button>
         </form>
       )}

@@ -7,8 +7,6 @@ const ThankYouLetter = () => {
 
   return (
     <div className="thankyou-wrapper">
-      <div className="floating-confetti"></div>
-
       <div className="thankyou-box">
         <h1>🎉 Thank You! 🎉</h1>
         <p className="msg">
@@ -16,7 +14,7 @@ const ThankYouLetter = () => {
         </p>
 
         <p className="line">
-          ❤️ *Your support makes the world a better place.* ❤️
+          ❤️ Your support makes the world a better place. ❤️
         </p>
 
         <button className="home-btn" onClick={() => navigate("/home")}>

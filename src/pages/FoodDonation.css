@@ -1,26 +1,30 @@
-/* Main Container */
+/* ===========================
+   Main Container
+   =========================== */
 .food-donation-container {
+  max-width: 850px;
+  margin: 40px auto;
+  background-color: #f9fff8;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.food-donation-container h2 {
+  color: #2e7d32;
   text-align: center;
-  padding: 50px 20px;
-  background: linear-gradient(135deg, #b3e5fc, #e1f5fe);
-  min-height: 100vh;
-  animation: fadeIn 1s ease-in-out;
-}
-
-.food-donation-container h1 {
-  font-size: 2.8rem;
-  color: #01579b;
   margin-bottom: 10px;
-  font-weight: 700;
 }
 
-.food-donation-container p {
-  font-size: 1.3rem;
-  color: #0277bd;
-  margin-bottom: 40px;
+.intro-text {
+  text-align: center;
+  color: #555;
+  margin-bottom: 25px;
 }
 
-/* Grid Layout: 3 cards per row */
+/* ===========================
+   Food Grid & Cards
+   =========================== */
 .food-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -28,7 +32,6 @@
   padding: 0 20px;
 }
 
-/* Food Card Styling */
 .food-card {
   background: white;
   padding: 25px 20px;
@@ -57,88 +60,79 @@
   margin-bottom: 18px;
 }
 
-/* Donate Button */
 .donate-btn {
-  background: #0288d1;
+  background-color: #4caf50;
   color: white;
+  padding: 12px 20px;
   border: none;
-  padding: 10px 18px;
   border-radius: 8px;
+  font-size: 1.1em;
   cursor: pointer;
-  transition: background 0.3s ease, transform 0.3s ease;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
 .donate-btn:hover {
-  background: #01579b;
-  transform: scale(1.05);
+  background-color: #2e7d32;
+  transform: translateY(-2px);
 }
 
-/* Donation Form */
+/* ===========================
+   Donation Form
+   =========================== */
 .donation-form {
   background: #e1f5fe;
   padding: 20px;
   border-radius: 15px;
   margin-top: 30px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.donation-form form {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
-.donation-form input {
+.form-row {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+input,
+select,
+textarea {
   padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #0288d1;
-  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1em;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-.donation-form h3 {
-  margin-top: 15px;
-  color: #01579b;
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #4caf50;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+  outline: none;
 }
 
-.donation-form button {
-  width: fit-content;
-  background: #0288d1;
-  color: white;
-  border: none;
-  padding: 10px 18px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s ease, transform 0.3s ease;
+.map-section {
+  margin-top: 25px;
 }
 
-.donation-form button:hover {
-  background: #01579b;
-  transform: scale(1.05);
+.map-section h3 {
+  color: #014f86;
+  margin-bottom: 8px;
 }
 
-/* Responsive Design */
-@media (max-width: 1024px) {
-  .food-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.loading-text {
+  color: #666;
+  font-style: italic;
 }
 
-@media (max-width: 680px) {
-  .food-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Animations */
-@keyframes fadeIn {
-  0% { opacity: 0; transform: scale(0.96); }
-  100% { opacity: 1; transform: scale(1); }
-}
-
-@keyframes slideUp {
-  0% { opacity: 0; transform: translateY(40px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
 /* ===========================
    City Search Section
    =========================== */
@@ -154,7 +148,6 @@
   font-weight: 600;
 }
 
-/* Search Input & Button */
 .city-search-box {
   display: flex;
   justify-content: center;
@@ -222,4 +215,35 @@
   border-color: #014f86;
   outline: none;
   box-shadow: 0 0 5px rgba(1, 79, 134, 0.3);
+}
+
+/* ===========================
+   Animations
+   =========================== */
+@keyframes slideUp {
+  0% { opacity: 0; transform: translateY(40px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ===========================
+   Responsive
+   =========================== */
+@media (max-width: 1024px) {
+  .food-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 680px) {
+  .food-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .city-search-box input {
+    width: 100%;
+  }
+
+  .styled-dropdown {
+    width: 100%;
+  }
 }

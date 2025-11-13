@@ -22,7 +22,7 @@ const Welcome = () => {
     // Redirect to Home after 6 seconds
     const timer = setTimeout(() => {
       navigate("/home");
-    }, 6000);
+    }, 4000);
 
     return () => {
       clearInterval(bgTimer);
