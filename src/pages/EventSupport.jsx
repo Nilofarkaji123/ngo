@@ -1,15 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./EventSupport.css";
 import { useNavigate } from "react-router-dom";
 
 const EventSupport = () => {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   const [data, setData] = useState({
+    city: "",
+    ngoName: "",
     eventType: "",
     otherReason: "",
     organizer: "",
-    ngoName: "",
     date: "",
     hour: "",
     minute: "",
@@ -21,15 +23,9 @@ const EventSupport = () => {
   });
 
   const [errors, setErrors] = useState({});
+  const [ngos, setNgos] = useState([]);
 
-  const ngos = [
-    "Jeevan Asha Foundation",
-    "Anand Children Care",
-    "Smiles NGO",
-    "Helping Hands Trust",
-    "Hope for Children"
-  ];
-
+  const cities = ["Nashik", "Pune", "Mumbai", "Nagpur"]; // Cities dropdown
   const eventTypes = [
     "Birthday Celebration",
     "Children's Day Celebration",
@@ -39,7 +35,6 @@ const EventSupport = () => {
     "Social Gathering",
     "Other"
   ];
-
   const locations = [
     "NGO Hall",
     "Children Activity Room",
@@ -47,6 +42,34 @@ const EventSupport = () => {
     "Dining / Serving Area",
     "Other Location"
   ];
+
+  // Fetch NGOs dynamically based on selected city
+  useEffect(() => {
+    if (!data.city) {
+      setNgos([]);
+      setData((prev) => ({ ...prev, ngoName: "" }));
+      return;
+    }
+
+    const fetchNgos = async () => {
+      try {
+        const response = await fetch(`http://localhost:8082/ngo/get-ngos?city=${data.city}`);
+        const result = await response.json();
+
+        if (result.status === "success") {
+          setNgos(result.ngos);
+          setData((prev) => ({ ...prev, ngoName: "" })); // Reset NGO selection
+        } else {
+          setNgos([]);
+        }
+      } catch (err) {
+        console.error(err);
+        setNgos([]);
+      }
+    };
+
+    fetchNgos();
+  }, [data.city]);
 
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
@@ -74,6 +97,7 @@ const EventSupport = () => {
       errs.email = "Enter a valid email address.";
 
     if (!data.eventType) errs.eventType = "Select an event type.";
+    if (!data.city) errs.city = "Select a city.";
     if (!data.ngoName) errs.ngoName = "Select an NGO.";
     if (!data.date) errs.date = "Choose a valid event date.";
     if (!data.hour || !data.minute || !data.ampm)
@@ -83,7 +107,7 @@ const EventSupport = () => {
     return errs;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const validationErrors = validate();
 
@@ -93,10 +117,33 @@ const EventSupport = () => {
     }
 
     const finalTime = `${data.hour}:${data.minute} ${data.ampm}`;
+    const payload = {
+      ...data,
+      time: finalTime
+    };
 
-    console.log("🎉 Event Booking Submitted:", { ...data, finalTime });
-    alert("✅ Event booking successful!");
-    navigate("/thank-you");
+    try {
+      setLoading(true);
+      const response = await fetch("http://localhost:8082/ngo/api/event", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(payload)
+      });
+
+      const result = await response.json();
+      setLoading(false);
+
+      if (result.status === "success") {
+        alert("✅ Event booking successful! Await admin approval.");
+        navigate("/thank-you");
+      } else {
+        alert("❌ " + (result.message || "Something went wrong"));
+      }
+    } catch (err) {
+      setLoading(false);
+      console.error(err);
+      alert("❌ Server error. Please try again later.");
+    }
   };
 
   return (
@@ -107,6 +154,31 @@ const EventSupport = () => {
       </p>
 
       <form className="event-support-form" onSubmit={handleSubmit}>
+        {/* City selection */}
+        <div className="form-group">
+          <label>City</label>
+          <select name="city" onChange={handleChange} value={data.city} required>
+            <option value="">-- Select City --</option>
+            {cities.map((city, i) => (
+              <option key={i} value={city}>{city}</option>
+            ))}
+          </select>
+          {errors.city && <span className="error">{errors.city}</span>}
+        </div>
+
+        {/* NGO selection */}
+        <div className="form-group">
+          <label>Select NGO</label>
+          <select name="ngoName" onChange={handleChange} value={data.ngoName} required disabled={!ngos.length}>
+            <option value="">-- Select NGO --</option>
+            {ngos.map((ngo) => (
+              <option key={ngo.id} value={ngo.name}>{ngo.name}</option>
+            ))}
+          </select>
+          {errors.ngoName && <span className="error">{errors.ngoName}</span>}
+        </div>
+
+        {/* Event type */}
         <div className="form-group">
           <label>Event Type</label>
           <select name="eventType" onChange={handleChange} value={data.eventType} required>
@@ -121,48 +193,21 @@ const EventSupport = () => {
         {data.eventType === "Other" && (
           <div className="form-group">
             <label>Reason / Purpose</label>
-            <textarea
-              name="otherReason"
-              onChange={handleChange}
-              placeholder="Describe purpose..."
-              required
-            />
+            <textarea name="otherReason" onChange={handleChange} placeholder="Describe purpose..." required />
           </div>
         )}
 
+        {/* Organizer, Email, Date, Time, Location */}
         <div className="form-group">
           <label>Your Name</label>
-          <input
-            type="text"
-            name="organizer"
-            placeholder="Enter your name"
-            onChange={handleChange}
-            required
-          />
+          <input type="text" name="organizer" placeholder="Enter your name" onChange={handleChange} required />
           {errors.organizer && <span className="error">{errors.organizer}</span>}
         </div>
 
         <div className="form-group">
           <label>Email</label>
-          <input
-            type="email"
-            name="email"
-            placeholder="Enter your email"
-            onChange={handleChange}
-            required
-          />
+          <input type="email" name="email" placeholder="Enter your email" onChange={handleChange} required />
           {errors.email && <span className="error">{errors.email}</span>}
-        </div>
-
-        <div className="form-group">
-          <label>Select NGO</label>
-          <select name="ngoName" onChange={handleChange} required>
-            <option value="">-- Select NGO --</option>
-            {ngos.map((ngo, i) => (
-              <option key={i} value={ngo}>{ngo}</option>
-            ))}
-          </select>
-          {errors.ngoName && <span className="error">{errors.ngoName}</span>}
         </div>
 
         <div className="form-group">
@@ -199,7 +244,7 @@ const EventSupport = () => {
 
         <div className="form-group">
           <label>Celebration Area</label>
-          <select name="location" onChange={handleChange} required>
+          <select name="location" onChange={handleChange} value={data.location} required>
             <option value="">-- Select Area --</option>
             {locations.map((loc, i) => (
               <option key={i} value={loc}>{loc}</option>
@@ -209,29 +254,18 @@ const EventSupport = () => {
         </div>
 
         {data.location === "Other Location" && (
-          <input
-            type="text"
-            name="otherLocation"
-            placeholder="Enter full address"
-            onChange={handleChange}
-            required
-          />
+          <input type="text" name="otherLocation" placeholder="Enter full address" onChange={handleChange} required />
         )}
 
         <div className="form-group">
           <label>Contact Number</label>
-          <input
-            type="tel"
-            name="contact"
-            maxLength="10"
-            placeholder="Enter 10-digit mobile number"
-            onChange={handleChange}
-            required
-          />
+          <input type="tel" name="contact" maxLength="10" placeholder="Enter 10-digit mobile number" onChange={handleChange} required />
           {errors.contact && <span className="error">{errors.contact}</span>}
         </div>
 
-        <button type="submit" className="book-btn">📅 Book Event</button>
+        <button type="submit" className="book-btn" disabled={loading}>
+          {loading ? "Booking..." : "📅 Book Event"}
+        </button>
       </form>
     </div>
   );
