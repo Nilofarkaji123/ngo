@@ -31,20 +31,17 @@ const ClothesDonation = () => {
       navigator.geolocation.getCurrentPosition(
         (pos) => {
           const { latitude, longitude } = pos.coords;
-          // Sort NGOs by distance (mock)
-          const sortedNgos = ngos.map((ngo) => ({
-            ...ngo,
-            distance: Math.sqrt(
-              (latitude - ngo.lat) ** 2 + (longitude - ngo.lng) ** 2
-            ),
-          })).sort((a, b) => a.distance - b.distance);
+          // Sort NGOs by distance
+          const sortedNgos = ngos
+            .map((ngo) => ({
+              ...ngo,
+              distance: Math.sqrt((latitude - ngo.lat) ** 2 + (longitude - ngo.lng) ** 2),
+            }))
+            .sort((a, b) => a.distance - b.distance);
 
           setNearbyNgos(sortedNgos);
         },
-        () => {
-          // fallback: show all NGOs if geolocation fails
-          setNearbyNgos(ngos);
-        }
+        () => setNearbyNgos(ngos) // fallback
       );
     } else {
       setNearbyNgos(ngos);
@@ -60,10 +57,42 @@ const ClothesDonation = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert("👕 Clothes donation request submitted successfully!");
-    console.log("Clothes Donation Data:", form);
+
+    try {
+      const response = await fetch("http://localhost:8082/ngo/clothesDonation", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(form).toString(),
+      });
+
+      const data = await response.json();
+
+      if (data.status === "success") {
+        alert("👕 Clothes donation request submitted successfully!");
+        console.log("Clothes Donation Data:", form);
+
+        setForm({
+          donorName: "",
+          ngoId: "",
+          quantity: "",
+          condition: "",
+          ageGroup: "",
+          gender: "",
+          pickupAddress: "",
+          pickupDate: "",
+          contactNumber: "",
+          message: "",
+          image: null,
+        });
+      } else {
+        alert("❌ Failed to submit donation. Try again!");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("⚠️ Server not reachable! Please start your Tomcat server.");
+    }
   };
 
   const today = new Date().toISOString().split("T")[0];
