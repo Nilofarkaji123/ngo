@@ -9,17 +9,25 @@ const Register = () => {
     email: "",
     password: "",
     confirmPassword: "",
+    // NGO verification fields
     ngoRegNumber: "",
     ngoAddress: "",
     ngoContact: "",
-    certificate: null,
+    registrationCert: null,
+    certificate12A: null,
+    certificate80G: null,
+    ngoPanCard: null,
+    ownerIdProof: null,
+    addressProof: null,
   });
 
   const navigate = useNavigate();
 
   const handleChange = (e) => {
-    if (e.target.name === "certificate") {
-      setFormData({ ...formData, certificate: e.target.files[0] });
+    if (
+      e.target.type === "file"
+    ) {
+      setFormData({ ...formData, [e.target.name]: e.target.files[0] });
     } else {
       setFormData({ ...formData, [e.target.name]: e.target.value });
     }
@@ -34,24 +42,33 @@ const Register = () => {
     }
 
     try {
-      // Use multipart form-data since file upload is included
       const formBody = new FormData();
       formBody.append("role", formData.role);
       formBody.append("name", formData.name);
       formBody.append("email", formData.email);
       formBody.append("password", formData.password);
 
+      // Append NGO documents if role is NGO
       if (formData.role === "ngo") {
         formBody.append("ngoRegNumber", formData.ngoRegNumber);
         formBody.append("ngoAddress", formData.ngoAddress);
         formBody.append("ngoContact", formData.ngoContact);
-        formBody.append("certificate", formData.certificate);
+
+        formBody.append("registrationCert", formData.registrationCert);
+        formBody.append("certificate12A", formData.certificate12A);
+        formBody.append("certificate80G", formData.certificate80G);
+        formBody.append("ngoPanCard", formData.ngoPanCard);
+        formBody.append("ownerIdProof", formData.ownerIdProof);
+        formBody.append("addressProof", formData.addressProof);
       }
 
-      const response = await fetch("http://localhost:8082/ngo/api/register", {
-        method: "POST",
-        body: formBody, // do NOT add headers for multipart
-      });
+      const response = await fetch(
+        "http://localhost:8082/ngo/api/register",
+        {
+          method: "POST",
+          body: formBody,
+        }
+      );
 
       const data = await response.json();
 
@@ -78,7 +95,7 @@ const Register = () => {
           <div className="input-group">
             <label>Register As</label>
             <select name="role" value={formData.role} onChange={handleChange}>
-              <option value="user">🙋 User</option>
+              <option value="user">🙋 User / Donor</option>
               <option value="ngo">🏢 NGO</option>
             </select>
           </div>
@@ -89,13 +106,9 @@ const Register = () => {
             <input
               type="text"
               name="name"
-              placeholder={
-                formData.role === "ngo"
-                  ? "Enter NGO Name"
-                  : "Enter your full name"
-              }
-              onChange={handleChange}
+              placeholder={formData.role === "ngo" ? "Enter NGO Name" : "Enter full name"}
               required
+              onChange={handleChange}
             />
           </div>
 
@@ -106,8 +119,8 @@ const Register = () => {
               type="email"
               name="email"
               placeholder="Enter your email"
-              onChange={handleChange}
               required
+              onChange={handleChange}
             />
           </div>
 
@@ -119,9 +132,9 @@ const Register = () => {
                 <input
                   type="text"
                   name="ngoRegNumber"
-                  placeholder="Enter NGO Registration Number"
+                  placeholder="Enter NGO registration number"
+                  required
                   onChange={handleChange}
-                  required={formData.role === "ngo"}
                 />
               </div>
 
@@ -129,9 +142,9 @@ const Register = () => {
                 <label>NGO Address</label>
                 <textarea
                   name="ngoAddress"
-                  placeholder="Enter NGO Address"
+                  placeholder="Enter full NGO address"
+                  required
                   onChange={handleChange}
-                  required={formData.role === "ngo"}
                 ></textarea>
               </div>
 
@@ -140,21 +153,41 @@ const Register = () => {
                 <input
                   type="number"
                   name="ngoContact"
-                  placeholder="Enter contact number"
+                  placeholder="Enter NGO phone number"
+                  required
                   onChange={handleChange}
-                  required={formData.role === "ngo"}
                 />
               </div>
 
+              {/* File Uploads For Verification */}
               <div className="input-group">
-                <label>Upload Certificate (PDF/Image)</label>
-                <input
-                  type="file"
-                  name="certificate"
-                  accept=".pdf,.jpg,.jpeg,.png"
-                  onChange={handleChange}
-                  required={formData.role === "ngo"}
-                />
+                <label>NGO Registration Certificate</label>
+                <input type="file" name="registrationCert" accept=".pdf,.jpg,.png" required onChange={handleChange} />
+              </div>
+
+              <div className="input-group">
+                <label>12A Certificate</label>
+                <input type="file" name="certificate12A" accept=".pdf,.jpg,.png" required onChange={handleChange} />
+              </div>
+
+              <div className="input-group">
+                <label>80G Certificate</label>
+                <input type="file" name="certificate80G" accept=".pdf,.jpg,.png" required onChange={handleChange} />
+              </div>
+
+              <div className="input-group">
+                <label>NGO PAN Card</label>
+                <input type="file" name="ngoPanCard" accept=".pdf,.jpg,.png" required onChange={handleChange} />
+              </div>
+
+              <div className="input-group">
+                <label>Owner Aadhaar / PAN</label>
+                <input type="file" name="ownerIdProof" accept=".pdf,.jpg,.png" required onChange={handleChange} />
+              </div>
+
+              <div className="input-group">
+                <label>NGO Address Proof (Electricity Bill / Rent Agreement)</label>
+                <input type="file" name="addressProof" accept=".pdf,.jpg,.png" required onChange={handleChange} />
               </div>
             </>
           )}
@@ -162,13 +195,7 @@ const Register = () => {
           {/* Password */}
           <div className="input-group">
             <label>Password</label>
-            <input
-              type="password"
-              name="password"
-              placeholder="Enter password"
-              onChange={handleChange}
-              required
-            />
+            <input type="password" name="password" placeholder="Enter password" required onChange={handleChange} />
           </div>
 
           <div className="input-group">
@@ -177,18 +204,15 @@ const Register = () => {
               type="password"
               name="confirmPassword"
               placeholder="Re-enter password"
-              onChange={handleChange}
               required
+              onChange={handleChange}
             />
           </div>
 
-          <button type="submit" className="register-btn">
-            Register
-          </button>
+          <button type="submit" className="register-btn">Register</button>
 
           <p className="login-link">
-            Already have an account?{" "}
-            <span onClick={() => navigate("/login")}>Login</span>
+            Already have an account? <span onClick={() => navigate("/login")}>Login</span>
           </p>
         </form>
       </div>
