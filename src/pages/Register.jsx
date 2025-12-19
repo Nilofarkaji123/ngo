@@ -66,6 +66,7 @@ const Register = () => {
         "http://localhost:8082/ngo/api/register",
         {
           method: "POST",
+          
           body: formBody,
         }
       );
