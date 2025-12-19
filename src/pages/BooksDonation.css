@@ -1,123 +1,100 @@
-.books-donation-container {
-  max-width: 800px;
-  margin: 40px auto;
+.books-donation-bg {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #b3e5fc, #e1f5fe);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 30px;
-  background: linear-gradient(135deg, #89f7fe, #66a6ff);
+}
+
+.books-donation-card {
+  background: white;
   border-radius: 20px;
-  font-family: 'Poppins', sans-serif;
-  color: #222;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  padding: 30px 40px;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  font-family: "Poppins", sans-serif;
 }
 
-.books-donation-container h2 {
+.form-title {
   text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 30px;
-  color: #ffffff;
-  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.3);
+  color: #0277bd;
+  margin-bottom: 25px;
+  font-size: 1.8rem;
+  font-weight: 700;
 }
 
-.books-donation-form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  background-color: rgba(255, 255, 255, 0.95);
-  padding: 25px;
-  border-radius: 15px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+label {
+  display: block;
+  color: #01579b;
+  margin-bottom: 10px;
+  font-weight: 600;
 }
 
-.books-donation-form label {
-  display: flex;
-  flex-direction: column;
-  font-weight: 500;
-  font-size: 1rem;
-  color: #0a2540;
-}
-
-.books-donation-form input,
-.books-donation-form select {
+select,
+input[type="number"] {
+  width: 100%;
   padding: 10px;
-  margin-top: 5px;
-  border-radius: 8px;
-  border: 1px solid #b0c4de;
-  font-size: 1rem;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  border: 1px solid #81d4fa;
   outline: none;
-  transition: border-color 0.3s ease;
+  transition: 0.3s;
+  background-color: #f8f9fa;
 }
 
-.books-donation-form input:focus,
-.books-donation-form select:focus {
-  border-color: #1e90ff;
-  box-shadow: 0 0 5px rgba(30, 144, 255, 0.4);
+select:focus,
+input[type="number"]:focus {
+  border-color: #0288d1;
+  box-shadow: 0 0 8px rgba(2, 136, 209, 0.3);
 }
 
 .book-item {
-  border: 2px dotted #4682b4;
+  background: #f1faff;
   padding: 15px;
   border-radius: 12px;
-  position: relative;
-  background-color: #f0f8ff;
+  margin-bottom: 15px;
 }
 
-.book-item h4 {
-  margin-bottom: 10px;
-  color: #0a2540;
-}
-
-.book-item button {
-  margin-top: 10px;
-  padding: 8px 12px;
+.remove-btn {
+  background: #ef5350;
+  color: white;
   border: none;
   border-radius: 8px;
-  background-color: #1e90ff;
-  color: white;
+  padding: 6px 12px;
   cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
 }
 
-.book-item button:hover {
-  background-color: #0077cc;
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .add-btn,
 .submit-btn {
-  padding: 15px;
-  font-size: 1.2rem;
-  border-radius: 12px;
+  background: linear-gradient(135deg, #4fc3f7, #0288d1);
+  color: white;
   border: none;
-  font-weight: bold;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s;
+  transition: 0.3s;
 }
 
-.add-btn {
-  background-color: #00bfff;
-  color: white;
-}
-
-.add-btn:hover {
-  background-color: #0099cc;
-  transform: scale(1.03);
-}
-
-.submit-btn {
-  background-color: #0077cc;
-  color: white;
-}
-
+.add-btn:hover,
 .submit-btn:hover {
-  background-color: #005fa3;
-  transform: scale(1.03);
+  background: linear-gradient(135deg, #0288d1, #01579b);
 }
 
 .thank-you {
   text-align: center;
-  font-size: 1.2rem;
-  color: #ffffff;
-  padding: 30px;
-  background: linear-gradient(135deg, #6dd5fa, #2980b9);
-  border-radius: 15px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  color: #0277bd;
+}
+
+.thank-you h3 {
+  font-size: 1.6rem;
+  margin-bottom: 10px;
 }

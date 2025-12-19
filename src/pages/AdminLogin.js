@@ -7,15 +7,33 @@ const AdminLogin = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
-    // ✅ Static admin credentials
-    if (username === "Creator" && password === "Being human") {
-      alert("Admin login successful 🎉");
-      navigate("/admin-panel");
-    } else {
-      alert("Invalid credentials ❌");
+    if (!username || !password) {
+      alert("Please enter both username and password");
+      return;
+    }
+
+    try {
+      // Call backend servlet for login
+      const res = await fetch("http://localhost:8082/ngo/admin-login", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({ username, password }),
+      });
+
+      const data = await res.json();
+
+      if (data.status === "success") {
+        alert(data.message);
+        navigate("/admin-panel"); // Navigate to admin panel
+      } else {
+        alert(data.message);
+      }
+    } catch (err) {
+      console.error("Login error:", err);
+      alert("Server error. Make sure backend is running.");
     }
   };
 
