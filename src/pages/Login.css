@@ -1,105 +1,75 @@
-/* Container for the whole page */
+/* Page background */
 .login-container {
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  background-color: #e0f7ff; /* very light blue background */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+ background-color: #e0f7ff;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Card container */
+/* Login card */
 .login-card {
-  background-color: #f0f8ff; /* light blue card */
-  padding: 40px 30px;
+  background: #ffffff;
+  width: 100%;
+  max-width: 380px;
+  padding: 35px 30px;
   border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1); /* softer shadow */
-  color: #003366; /* dark blue text */
-  width: 100%;
-  max-width: 400px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Hover effect on card */
-.login-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
-}
-
-/* Title and subtitle */
+/* Heading */
 .login-card h2 {
-  margin-bottom: 10px;
-  font-size: 1.8rem;
-  color: #004080; /* darker blue for title */
-}
-
-.login-card p {
   margin-bottom: 25px;
-  font-size: 1rem;
-  color: #0066cc; /* medium blue for subtitle */
+  color: #333;
+  font-size: 26px;
 }
 
-/* Input groups */
-.input-group {
-  margin-bottom: 20px;
-  text-align: left;
-}
-
-.input-group label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: 500;
-  color: #004080; /* label in darker blue */
-}
-
-.input-group input {
-  width: 100%;
-  padding: 10px 12px;
-  border-radius: 8px;
-  border: 1px solid #99ccff; /* soft blue border */
-  outline: none;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-}
-
-.input-group input:focus {
-  border-color: #3399ff; /* bright blue on focus */
-  box-shadow: 0 0 8px rgba(51,153,255,0.3);
-}
-
-/* Button */
-.login-btn {
+/* Inputs */
+.login-card input {
   width: 100%;
   padding: 12px;
-  border: none;
-  border-radius: 8px;
-  background-color: #3399ff; /* medium blue */
+  margin-bottom: 15px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  outline: none;
+}
+
+.login-card input:focus {
+  border-color: #4facfe;
+  box-shadow: 0 0 5px rgba(79, 172, 254, 0.5);
+}
+
+/* Login button */
+.login-card button {
+  width: 100%;
+  padding: 12px;
+  background-color: #4facfe;
   color: white;
-  font-size: 1.1rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
   font-weight: bold;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background 0.3s;
 }
 
-.login-btn:hover {
-  background-color: #0073e6; /* darker on hover */
+.login-card button:hover {
+  background-color: #328fe0;
 }
 
-/* Register link */
-.register-link {
-  margin-top: 15px;
-  font-size: 0.95rem;
-  color: #0066cc;
+/* Divider */
+.login-card hr {
+  margin: 20px 0;
+  border: none;
+  height: 1px;
+  background: #ddd;
 }
 
-.register-link span {
-  cursor: pointer;
-  color: #004080;
-  font-weight: 600;
-  text-decoration: underline;
-}
-
-.register-link span:hover {
-  color: #3399ff;
+/* Google button center fix */
+.login-card div[role="button"] {
+  display: flex !important;
+  justify-content: center !important;
 }

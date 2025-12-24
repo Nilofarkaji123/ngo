@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import "aos/dist/aos.css";
 
+
 // Pages
 import Welcome from "./pages/Welcome";
 import Home from "./pages/Home";
